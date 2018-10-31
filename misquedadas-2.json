@@ -1,0 +1,29 @@
+{
+  "server": {
+    "port": 8080,
+    "host": "138.4.18.67"
+  },
+  "db": {
+    "port": 3306,
+    "host": "localhost",
+    "user": "root",
+    "password": "Poner aquí la clave que indicamos en el enunciado para acceder a la BBDD",
+    "database": "misquedadas",
+    "connectionLimit": 10
+  },
+  "logger": {
+    "namespaces": {
+      "root": "info",
+      "mq2": "debug",
+      "mq2.db": "debug",
+      "mq2.middleware": "debug",
+      "mq2.metric": "info",
+      "mq2.executor": "info",
+      "mq2.service": "debug",
+      "mq2.shutdown": "info"
+    },
+    "separator": ".",
+    "appender": "console"
+  },
+  "GoogleMapsAPIkey" : "Poner aquí la clave que indicamos en el enunciado para Google Maps"
+}
