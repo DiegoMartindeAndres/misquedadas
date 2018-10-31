@@ -1,0 +1,107 @@
+<% include head %>
+
+<div class="container mt-3">
+  <% include user %>
+
+
+  <div class="row">
+
+    <div class="col-sm-2">
+
+      <div class="d-flex justify-content-between">
+        <div>
+          <div class = "card align-items-stretch">
+            <h3>Quedadas:</h3>
+            <ul class="list-unstyled">
+              <% for(var i=0; i<quedadas.length; i++) { %>
+                <li>
+                  <a href='/quedada/<%= quedadas[i] %>'>
+                    <%if (quedadas[i] == quedada.que ) { %>
+                      <strong><%= quedadas[i] %></strong>
+                      <% } else{ %>
+                        <%= quedadas[i] %>
+                      <% } %>
+                  </a>
+                </li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </div>
+  </div>
+    <div class="col-sm-8">
+      <div id="map"></div>
+    </div>
+    <div class="col-sm-2">
+      <div class="d-flex flex-column justify-content-between">
+        <div class = "card align-items-stretch">
+          <h3>Asistentes:</h3>
+          <div class="d-flex flex-column">
+          <% for(var i=0; i<asistentes.length; i++) { %>
+            <div class="card--content">
+              <a>
+                <img  src="/img/<%= asistentes[i] %>.jpg" alt="<%= asistentes[i] %>" title="<%= asistentes[i] %>"><br>
+              </a>
+            </div>
+
+          <% } %>
+        </div>
+        </div>
+     </div>
+    </div>
+  </div>
+<div class="row">
+      <div class="col-sm-2">
+
+        <a id="botonNuevaQuedada" href="/quedada/nuevo" class="btn btn-success btn-sm btn-block">Nueva Quedada</a>
+        <br>
+        <form method="post" action="/quedada/<%= quedada.que %>?_method=delete">
+          <button class="btn btn-danger btn-sm btn-block" type="submit"  onClick="return confirm('Se va a borrar: <%= quedada.que %>');">Borrar</button>
+        </form>
+
+
+      </div>
+      <div class="col-sm-8">
+        <p>
+          <i class="fas fa-globe"></i> <strong>Que: </strong><%= quedada.que %><br>
+          <i class="far fa-calendar-alt"></i> <strong>Día: </strong><%= quedada.dia %><br>
+          <i class="far fa-clock"></i> <strong>Hora: </strong><%= quedada.hora %><br>
+          <i class="fas fa-map-pin"></i> <strong>Dirección: </strong><%= quedada.direccion %><br>
+          <i class="fas fa-map-marker-alt"></i> <strong>Latitud: </strong><%= lat %><strong> Longitud: </strong><%= lng %><br>
+        </p>
+      </div>
+      <div class="col-sm-2">
+          <%if (asiste == false ) { %>
+            <form method="post" action="/api/asiste/?que=<%= quedada.que %>&nombre=<%= user %>">
+              <button class="btn btn-success btn-lg btn-block" type="submit"  onClick="return confirm('¿Confirmas asistir a la quedada <%= quedada.que %>?');" >Asistir</button>
+            </form>
+          <% } else{ %>
+            <form method="post" action="/api/asiste/?que=<%= quedada.que %>&nombre=<%= user %>">
+              <button type="submit" class="btn btn-danger btn-lg btn-block" onClick="return confirm('¿Confirmas dejar de asistir a la quedada <%= quedada.que %>?');">No asistir</button>
+            </form>
+          <% } %>
+      </div>
+</div>
+</div>
+
+
+<script>
+function initMap() {
+  var location = {lat: <%= lat %>, lng: <%= lng %>};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 19,
+    center: location,
+    gestureHandling: 'none',
+    streetViewControl: false,
+    zoomControl: true
+  });
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map,
+    title: 'Quedada'
+  });
+};
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=<%- GoogleMapsAPIkey %>&callback=initMap">
+</script>

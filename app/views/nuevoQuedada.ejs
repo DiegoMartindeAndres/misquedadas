@@ -1,0 +1,222 @@
+<% include head %>
+<div class="container mt-3">
+  <% include user %>
+<h1 class="d-flex justify-content-center">Nueva quedada</h1><br>
+
+<!-- <ul>
+  <% for(var i=0; i<sitios.length; i++) { %>
+    <li>
+        <%= sitios[i] %>
+        <form method="post" action="/sitio/<%= sitios[i] %>?_method=delete">
+          <button type="submit"  onClick="return confirm('Se va a borrar el sitio: <%= sitios[i] %>');">Borrar</button>
+        </form>
+    </li>
+    <% } %>
+  </ul> -->
+
+
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label text-danger" id="texto" for="que">Nombre quedada: </label>
+      <div class="col-sm-9">
+        <input type="text" name ="que" class="form-control is-invalid" id="que" placeholder="Introduce el nombre de la nueva quedada..." onkeyup="validateForm()">
+      </div>
+    <span id="icono" class="col-sm-1 fas fa-times fa-2x text-danger"></span>
+    </div>
+  <h4>Selecciona un sitio</h4>
+  <select name ="direccion"  id="direccion" onchange="validateForm();" class="custom-select" size="10">
+    <%if (sitios.length > 0) { %>
+      <option value="<%= sitios[0] %>" selected><%= sitios[0] %></option>
+      <% for(var i=1; i<sitios.length; i++) { %>
+            <option value="<%= sitios[i] %>"><%= sitios[i] %></option>
+      <% } %>
+    <% } %>
+  </select>
+
+  <!-- <form action="/sitio/nuevo">
+      <input type="submit" value="Nuevo sitio" />
+  </form> -->
+
+  <!-- <div class="nuevoQuedadaForm">
+    <div class='input-group date' id='datetimepicker1' >
+      <input type='text' name ="fechahora" id='fechahora' class="form-control" onchange="validateForm();" />
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    </div>
+  </div> -->
+
+  <div class="d-flex justify-content-center">
+    <a id="botonNuevoSitio" href="/sitio/nuevo" class="btn btn-primary btn-sm btn-success ">Crear nuevo sitio</a> <br>
+    <button id="botonEliminarSitio" type="submit" class="btn btn-primary btn-danger btn-sm " onclick="borrarSitio()">Borrar sitio</button>
+  </div>
+  <div style="overflow:hidden;">
+      <div class="form-group">
+          <div class="row d-flex justify-content-center">
+
+              <div class="col-md-8">
+                  <div data-target="#datetimepicker13" id="datetimepicker13"></div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <br>
+  <button id="botonEnviar" class="btn btn-danger btn-lg" type="submit" onClick="return confirm('¿Añadir nueva quedada?') && enviarDatos() ;" disabled >Crear quedada</button>
+  <br>
+  <br>
+  <div>
+    <button type="button" class="btn btn-light" data-toggle="collapse" data-target="#instrucciones">Pulsa para obtener instrucciones.</button>
+    <div id="instrucciones" class="collapse in">
+      <ul class="list-unstyled">
+        <li>Pon nombre a la quedada.</li>
+          <ul>
+            <li>No podrás poner el nombre de una quedada existente, ni llamarlo "nuevo".</li>
+          </ul>
+        <li>Elije el sitio donde se celebrará la quedada.</li>
+          <ul>
+            <li>Si no existe, puedes crear un sitio.</li>
+            <li>Si quieres puedes borrar un sitio, pero no puedes borrar sitios que pertenezcan a otra quedada.</li>
+          </ul>
+        <li>Elije la fecha y la hora de la quedada.</li>
+        <li>Para finalizar debes pulsar el botón de <i>Crear quedada</i></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Para borrar un sitio. -->
+<script type="text/javascript">
+
+
+var sitioBorrables = <%- JSON.stringify(sitiosBorrables) %>;
+
+function comprobarSitiosBorrables(){
+  var sitioSeleccionado = document.getElementById("direccion").value;
+
+  if (sitioBorrables.includes(sitioSeleccionado)) {
+    document.getElementById('botonEliminarSitio').disabled = false;
+  } else {
+    document.getElementById('botonEliminarSitio').disabled = true;
+  }
+};
+
+window.onload = comprobarSitiosBorrables;
+
+$( "select" ).change(function() {
+  comprobarSitiosBorrables();
+});
+
+
+
+function enviarDatos() {
+  var d = $('#datetimepicker13').datetimepicker('viewDate');
+  var dia = d.format("YYYY-MM-DD");
+  var hora = d.format("HH:mm");
+  var e = document.getElementById("direccion");
+  var direccion = e.options[e.selectedIndex].value;
+  var que = document.getElementById("que").value;
+
+  post('/quedada/', {"que":que,"direccion":direccion,"dia":dia,"hora":hora});
+
+}
+
+function borrarSitio() {
+  var e = document.getElementById("direccion");
+  var sitioSeleccionado = e.options[e.selectedIndex].value;
+  post('/sitio/'+sitioSeleccionado+'?_method=delete', {});
+}
+
+
+/**
+* sends a request to the specified url from a form. this will change the window location.
+* @param {string} path the path to send the post request to
+* @param {object} params the paramiters to add to the url
+* @param {string} [method=post] the method to use on the form
+*/
+
+function post(path, params, method) {
+   method = method || "post"; // Set method to post by default if not specified.
+
+   // The rest of this code assumes you are not using a library.
+   // It can be made less wordy if you use one.
+   var form = document.createElement("form");
+   form.setAttribute("method", method);
+   form.setAttribute("action", path);
+
+   for(var key in params) {
+       if(params.hasOwnProperty(key)) {
+           var hiddenField = document.createElement("input");
+           hiddenField.setAttribute("type", "hidden");
+           hiddenField.setAttribute("name", key);
+           hiddenField.setAttribute("value", params[key]);
+
+           form.appendChild(hiddenField);
+       }
+   }
+
+   document.body.appendChild(form);
+   form.submit();
+}
+
+</script>
+
+
+
+<!-- Para configurar el seleccionador de fechas. -->
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker13').datetimepicker({
+            inline: true,
+            sideBySide: true,
+            locale: 'es'
+        });
+    });
+</script>
+
+<!-- Para validar el formulario. -->
+<script>
+var quedadas = <%- JSON.stringify(quedadas) %>;
+var direccion = document.getElementById('direccion');
+
+function validateForm() {
+  console.log("entro a validar nueva quedada");
+  var x = document.getElementById("que").value;
+  if (quedadas.includes(x) || x == "" || x.toLowerCase() == "nuevo" ) {
+    document.getElementById("texto").classList.remove('text-success');
+    document.getElementById("icono").classList.remove('text-success');
+    document.getElementById("que").classList.remove('is-valid');
+    document.getElementById("icono").classList.remove('fa-check');
+    document.getElementById('botonEnviar').classList.remove('btn-success');
+
+
+    document.getElementById("texto").classList.add('text-danger');
+    document.getElementById("icono").classList.add('text-danger');
+    document.getElementById("que").classList.add('is-invalid');
+    document.getElementById("icono").classList.add('fa-times');
+    document.getElementById('botonEnviar').classList.add('btn-danger');
+
+    document.getElementById('botonEnviar').disabled = true;
+    return false;
+  } else {
+    document.getElementById("texto").classList.remove('text-danger');
+    document.getElementById("icono").classList.remove('text-danger');
+    document.getElementById("que").classList.remove('is-invalid');
+    document.getElementById("icono").classList.remove('fa-times');
+    document.getElementById('botonEnviar').classList.remove('btn-danger');
+
+    document.getElementById("texto").classList.add('text-success');
+    document.getElementById("icono").classList.add('text-success');
+    document.getElementById("que").classList.add('is-valid');
+    document.getElementById("icono").classList.add('fa-check');
+    document.getElementById('botonEnviar').classList.add('btn-success');
+
+    document.getElementById('botonEnviar').disabled = false;
+    return true;
+  }
+  return false;
+}
+
+texto.addEventListener("keyup", function (event) {
+  validateForm();
+}, false);
+</script>

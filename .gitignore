@@ -1,0 +1,29 @@
+#
+# misquedadas2 - https://github.com//misquedadas-2.git
+#
+# Copyright (c) 2018
+#
+
+# Jetbrains Editors
+.idea/
+*.iml
+
+# Node & NPM
+node_modules/
+npm-debug.log
+
+# JSDoc
+jsdoc/
+apidoc/
+
+# Settings
+settings.*.json
+
+# Mis ficheros
+clave.txt
+conectar.bat
+ficheros.txt
+inicializarDirectorios.sh
+logo.png
+misquedadas-2.json
+subir.bat
