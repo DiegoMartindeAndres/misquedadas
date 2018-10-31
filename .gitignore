@@ -27,3 +27,5 @@ inicializarDirectorios.sh
 logo.png
 misquedadas-2.json
 subir.bat
+start.sh
+stop.sh
