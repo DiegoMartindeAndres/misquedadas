@@ -1,8 +1,10 @@
 
-![misquedadas2](logo.png)
+# misquedadas
 
-# misquedadas2
+## Ejecutar el servidor
+node server.js
 
+<<<<<<< HEAD
 > TODO add here summary description
 
 _Generates with [Yeoman][yeoman] and the generator <https://github.com/blueskyfish/generator-express-restful-mysql.git>._
@@ -203,3 +205,5 @@ TODO Choose a license
 
 [github]: https://github.com
 [yeoman]: http://yeoman.io
+=======
+>>>>>>> 8cd85f2b3c7f15002e3d26a87bad074cf07c926b
