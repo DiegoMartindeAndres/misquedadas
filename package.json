@@ -1,18 +1,18 @@
 {
   "name": "misquedadas-2",
-  "version": "0.0.0",
-  "description": "TODO add a description",
+  "version": "0.0.1",
+  "description": "Práctica final de FTEL",
   "title": "misquedadas2",
   "author": " <diego.martin.de.andres@upm.es>",
   "repository": {
     "type": "git",
-    "url": "https://github.com//misquedadas-2.git"
+    "url": "https://github.com/DiegoMartindeAndres/misquedadas.git"
   },
   "readme": "TODO add a readme description",
-  "license": "TODO",
+  "license": "MIT",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js --config=settings.dev.json --log=logs",
+    "start": "node server.js",
     "jsdoc": "./node_modules/.bin/jsdoc -r -c ./jsdoc-config.json -d ./jsdoc",
     "apidoc": "./node_modules/.bin/apidoc -f \".*\\.js$\" -i ./app -o ./apidoc"
   },
@@ -26,12 +26,12 @@
     "connect-flash": "~0.1.1",
     "cookie-parser": "~1.4.3",
     "ejs": "^2.6.1",
-    "express": "4.15.2",
+    "express": ">=4.16.4",
     "express-session": "~1.15.6",
-    "lodash": "4.17.4",
+    "lodash": ">=4.17.5",
     "method-override": "^2.3.10",
     "minimist": "1.2.0",
-    "moment": "2.18.1",
+    "moment": ">=2.19.3",
     "mysql": "2.13.0",
     "passport": "~0.4.0",
     "passport-local": "~1.0.0",

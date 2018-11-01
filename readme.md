@@ -32,7 +32,7 @@ Some settings or replacement cannot be done with the generator. After doing this
 * Add a description into the `package.json` and to the summary of this readme file.
 * Execute `$ npm install` to resolve and load the dependencies.
 * Create a git repository with `$ git init` and add your git user information `$ git config user.name "" && git config user.email "diego.martin.de.andres@upm.es"`
-* Create a remote repository on [Github][github] with the name `misquedadas-2`. It should look after: `https://github.com//misquedadas-2.git`
+* Create a remote repository on [Github][github] with the name `misquedadas-2`. It should look after: `https://github.com/DiegoMartindeAndres/misquedadas.git`
 
 ## Execute the Application
 
