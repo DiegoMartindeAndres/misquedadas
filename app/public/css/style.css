@@ -2,6 +2,22 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+
+footer {
+    background-color: #fff;
+    border-top: 1px solid #ededed;
+    padding: 50px;
+    z-index: 2;
+    position: relative;
+    color: #484848;
+    text-align: center;
+}
+
+footer .copyright {
+    opacity: .5;
+    line-height: 1.7;
+}
+
 /*Objetos en columna con scroll*/
 .card {
   display: flex;
