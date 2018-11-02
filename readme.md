@@ -1,209 +1,53 @@
 
-# misquedadas
+# Instalación y pruebas del portal "misquedadas"
 
-## Ejecutar el servidor
-node server.js
+## Arranque y acceso al Servidor Personal Virtual
 
-<<<<<<< HEAD
-> TODO add here summary description
+*Arrancar el Servidor Personal desde Moodle de FTEL 
+*Moodle de la UPM -> Asignatura FTEL -> Tema 6 - Proyecto del curso -> Servidor Personal en la nube DIT: arranque, estado y acceso
+*Descargar en la máquina local la clave privada de acceso al servidor según se indica en las instrucciones de la página  anterior
+*Acceder, por ssh, al Servidor Personal siguiendo las instrucciones de la misma página
 
-_Generates with [Yeoman][yeoman] and the generator <https://github.com/blueskyfish/generator-express-restful-mysql.git>._
-
-## Table of Content
-
-* [TODOs](#user-content-todos)
-* [Execute the Application](#user-content-execute-the-application)
-* [Endpoints](#user-content-endpoints)
-* [Deployment](#user-content-deployment)
-	* [Parameters](#user-content-parameters)
-	* [Setting File](#user-content-setting-file)
-* [Home Directory](#user-content-home-directory)
-* [MySql Transaction](#user-content-mysql-transaction)
-* [Logging](#user-content-logging)
-* [Generate Documentation](#user-content-generate-documentation)
-* [License](#user-content-license)
-
-## TODOs
-
-Some settings or replacement cannot be done with the generator. After doing this, you can delete this section.
-
-* Choose a license (e.g: The MIT Licence).
-* Set the version in the `package.json`.
-* Replace the Logo (`logo.png`).
-* Replace with own hero ascii art _(example: <http://patorjk.com/software/taag/>)_ (`hero.txt`).
-* Add a description into the `package.json` and to the summary of this readme file.
-* Execute `$ npm install` to resolve and load the dependencies.
-* Create a git repository with `$ git init` and add your git user information `$ git config user.name "" && git config user.email "diego.martin.de.andres@upm.es"`
-* Create a remote repository on [Github][github] with the name `misquedadas-2`. It should look after: `https://github.com/DiegoMartindeAndres/misquedadas.git`
-
-## Execute the Application
+## Instalación de la aplicación
+En la consola de comandos del Servidor Personal ejecutar:
 
 ```sh
-$ node server.js [--verbose | -v] [--help] --config=/path/to/configuration.json
+$ cd ~
+$ git clone https://github.com/DiegoMartindeAndres/misquedadas.git
+$ cd ~/misquedadas
+$ npm install
 ```
 
-## Endpoints
+## Modificar las claves de acceso a la BBDD y al mapa de Google Maps
+Nos acabamos de descargar el código de un repositorio público. No es una buena práctica dejar en los repositorios públicos claves ya cualquiera podría ver las claves y acceder al sistema. Por lo tanto tendremos que añadir a mano dichas claves; las claves se almacenan en un fichero llamado “misquedadas-2.json”. Deberemos editarlo, por ejemplo con Nano (nano misquedadas-2.json)
 
-There are 2 endpoints after starting the application.
+Los valores concretos están publicados en el Moodle de la asignatura en el artículo "Instalación y pruebas del portal "misquedadas""
 
-* `/about`
-* `/mysql/show/databases`
+## Carga de contenidos
+*Rellenar la BBDD misquedadas, de forma similar a como se hizo en la práctica de BBDD, con los datos que se quieran presentar en el portal
 
-> **Note**: If the tool `apidoc` is installed, you can view the documentation on Endpoints in directory `apidoc`: call `npm run apidoc`.
-
-
-## Deployment
-
-Deploying of the application needs some settings on the computer machine.
-
-* Parameters
-* Setting File
-
-### Parameters
-
-Name                      | Type    | Required | Description
---------------------------|---------|----------|-------------------------------------------
-`--verbose` | `-v`        | boolean | no       | Show more logging messages
-`--help`                  | boolean | no       | Shows the help
-`--log=/path/of/loggging` | string  | yes      | Contains the directory how the log messages are written.
-`--config=/path/to`       | string  | yes      | The filename with the path to the configuration json file.
-
-
-### Setting File
-
-> An Example of the settings is finding at `settings.example.json`
-
-Name                | Type    | Default     | Description
---------------------|---------|-------------|------------------------------------------
-`server.host`       | string  | `localhost` | The server host for listening.
-`server.port`       | number  |             | The server port for listening. The server port is required now!
-`db.host`           | string  | `localhost` | The database host.
-`db.port`           | number  | `3306`      | The database port.
-`db.user`           | string  |             | The database user.
-`db.password`       | string  |             | The password for the database user.
-`db.database`       | string  |             | The database name.
-`logger.namespaces` | object  |             | The namespace configuration of the logger.
-`logger.separator`  | string  | `.`         | The separator for the namespace.
-`logger.appender`   | string  | `console`   | The appender setting (`console` or `file`).
-
-
-**Example:**
-
-```json
-{
-    "server": {
-        "host": "127.0.0.1",
-        "port": 65001
-    },
-    "db": {
-        "port": 3306,
-        "host": "localhost",
-        "user": "database user",
-        "password": "database password",
-        "database": "datebase name",
-        "connectionLimit": 10
-    },
-    "logger": {
-        "namespaces": {
-            "root": "info",
-            "temo": "debug",
-            "temo.db": "debug",
-            "temo.shutdown": "info"
-        },
-        "separator": ".",
-        "appender": "console"
-    }
-}
-```
-
-
-## Home Directory
-
-The home directory is calculated from the configuration filename.
-
-*Note: The pid file is written in the home directory!*
-
-**Sub Directories**
-
-* `logs` The log files are stored in this directory.
-
-## MySql Transaction
-
-> This is a feature since 0.6.0
-
-The MySql database is supported to work with transaction. Since the version `0.6.0` the module `db.js` is support the transaction.
-
-Here a short example for usage:
-
-* Insert a new user
-* Email address is unique
-
-```js
-/**
- * @param {object} user a user with the properties "name" and "email".
- * @return {Q.promise} the promise resolve callback receive the new user id.
- */
-module.exports.registerUser = function (user) {
-	return db.getTransaction(function (conn) {
-		return conn.beginTransaction()
-			.then(function () {
-				var SQL_INSERT = 'INSERT INTO `users` (name, email) VALUES({name}, {email})';
-				return conn.query(SQL_INSERT, user);
-			})
-			.then(function (result) {
-				return conn.commit(result);
-			})
-			.then(function (result) {
-				return result.insertId;
-			})
-			.fail(function (reason) {
-				return conn.rollback(reason);
-				// or
-				// return conn.rollback({
-				//   code: 'EMAIL_ALREADY_USE',
-				//   message: 'The email is already use'
-				// })
-			})
-			.finally(function () {
-				conn.release();
-			});
-		});
-};
-```
-
-
-## Logging
-
-There are 2 types as the log messages are written.
-
-* `console`: The log messages are written to the console.
-* `file`: The log messages are written into a file.
-
-The setting `logger.appender` controls the writing of the log messages. The parameter `--log` specifies path name where the log messages are written.
-
-## Generate Documentation
-
-There are to commands for generating the jsDoc and the apidoc for the endpoints:
-
-* jsDoc: `npm run jsdoc` generates the jsdoc in the directory `jsdoc`
-* apidoc: `npm run apidoc` generates the apidoc of the endpoints in the directory `apidoc`.
-
-**Steps**
+## Arranque del servicio
+En la consola de comandos del servidor personal ejecutar:
 
 ```sh
-$ npm run jsdoc
-$ npm run apidoc
+$ cd ~/misquedadas
+$ npm start
+```
+
+## Parar el servicio
+* Pulsando la combinación de teclas `Ctrl+C`
+
+## Comprobación del Servicio
+* NAVEGAR por la aplicación: navegador -> http://<la ip de mi servidor personal>:8080
+
+## Rearranque del servidor y del servicio
+Para rearrancar el servicio habrá que concatenar las acciones de parar el servicio y arrancar el servicio. Es decir:
+```sh
+`Ctrl+C`
+$ npm start
 ```
 
 
 ## License
 
-```
-TODO Choose a license
-```
-
-
-[github]: https://github.com
-[yeoman]: http://yeoman.io
-=======
->>>>>>> 8cd85f2b3c7f15002e3d26a87bad074cf07c926b
+Diego Martín de Andrés 2018
