@@ -1,14 +1,14 @@
 {
   "server": {
     "port": 8080,
-    "host": "IP de tu servidor"
+    "host": "localhost"
   },
   "db": {
     "port": 3306,
     "host": "localhost",
     "user": "root",
-    "password": "Clave de la BBDD",
-    "database": "misquedadas",
+    "password": "70p0$tre",
+    "database": "misquedadas2",
     "connectionLimit": 10
   },
   "logger": {
@@ -25,5 +25,5 @@
     "separator": ".",
     "appender": "console"
   },
-  "GoogleMapsAPIkey" : "Clave de API Google Maps"
+  "GoogleMapsAPIkey" : "AIzaSyAwCoyEXCC0y2ABp2yCunfy7sr6wDeaDkw"
 }
