@@ -1,0 +1,20 @@
+<nav class="flex">
+  <div class="nav-icon">
+    <a href="javascript:history.back()">
+      <i class="fas fa-chevron-circle-left"></i>
+    </a>
+  </div>
+  <div class="user">
+    <a href="/">
+      <img class="rounded-circle fotoUsuario" src="/img/<%= user %>.jpg" alt="<%= user %>" title="<%= user %>">
+      <div class="nombreUsuario">
+        <%= user %>
+      </div>
+    </a>
+  </div>
+  <div class="nav-icon">
+    <a href="/logout">
+      <i class="fas fa-power-off"></i>
+    </a>
+  </div>
+</nav>

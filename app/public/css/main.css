@@ -1,6 +1,200 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  padding: 0;
+  margin: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #3b8686;
+  padding-top: 100px;
+}
+
+@media (min-width: 576px) {
+  body {
+    padding-top: 200px;
+  }
+}
+
+nav.flex {
+  display: flex;
+  position: fixed;
+  top: 0;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  background-color: white;
+}
+
+nav.flex.scrolled {
+  box-shadow: -1px 16px 20px -10px rgba(0, 0, 0, 0.3);
+}
+
+nav.flex a {
+  color: black;
+}
+
+nav.flex .nav-icon {
+  flex: 0 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+  padding: 20px;
+}
+
+nav.flex .nav-icon i {
+  flex: 1 0 auto;
+  font-size: 30;
+  color: #cff09e;
+}
+
+nav.flex .user {
+  flex: 1 0 auto;
+  text-align: center;
+}
+
+nav.flex .user .fotoUsuario {
+  height: 45%;
+}
+
+nav.flex .user .nombreUsuario {
+  font-weight: normal;
+  font-size: 20;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+@media (min-width: 576px) {
+  nav.flex {
+    height: 200px;
+  }
+  nav.flex .user .fotoUsuario {
+    height: 62%;
+  }
+  nav.flex .user .nombreUsuario {
+    display: block;
+    margin: 0;
+  }
+  nav.flex.scrolled {
+    height: 100px;
+  }
+  nav.flex.scrolled .user .nombreUsuario {
+    display: inline-block;
+    margin-left: 10px;
+  }
+}
+
+/*PARA EL MAPA*/
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+.map-container {
+  padding: 0;
+}
+
+.map-container #map {
+  height: 100vw;
+}
+
+.map-container #map #infowindow-content {
+  display: inline;
+}
+
+.map-container #map .gmnoprint {
+  display: none;
+}
+
+.map-container #map .gm-control-active {
+  display: none;
+}
+
+.map-container #description {
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.map-container #infowindow-content {
+  display: none;
+}
+
+.map-container #infowindow-content .title {
+  font-weight: bold;
+}
+
+.map-container .pac-card {
+  margin: 10px 10px 0 0;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  font-family: Roboto;
+}
+
+.map-container #pac-container {
+  padding-bottom: 12px;
+  margin-right: 12px;
+  margin-top: 12px;
+}
+
+.map-container .pac-controls {
+  display: inline-block;
+  padding: 5px 11px;
+}
+
+.map-container .pac-controls label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.map-container #pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 400px;
+}
+
+.map-container #pac-input:focus {
+  border-color: #4d90fe;
+}
+
+.map-container #title {
+  color: #fff;
+  background-color: #4d90fe;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 6px 12px;
+}
+
+@media (min-width: 576px) {
+  .map-container {
+    padding: 0 15;
+  }
+  .map-container #map .gmnoprint {
+    display: block;
+  }
+  .map-container #map .gm-control-active {
+    display: block;
+  }
+}
+
+/*FINAL - PARA EL MAPA*/
+.floating-card {
+  background-color: white;
+  box-shadow: -1px 16px 20px -10px rgba(0, 0, 0, 0.3);
+  padding: 15;
+}
+
+.floating-card.info-container .info-item {
+  margin-top: 15;
+}
 
 footer {
   background-color: #fff;
@@ -9,172 +203,130 @@ footer {
   z-index: 2;
   position: relative;
   color: #484848;
-  text-align: center; }
-  footer .copyright {
-    opacity: .5;
-    line-height: 1.7; }
+  text-align: center;
+}
 
-/*Objetos en columna con scroll*/
-.card {
-  display: flex;
-  height: 65%;
-  overflow-x: auto;
-  border: 0px !important; }
+footer .copyright {
+  opacity: .5;
+  line-height: 1.7;
+}
 
-.card--content {
-  margin: 2px;
-  padding: 2px; }
-
-/*Fin Objetos en columna con scroll*/
-/* Foto usuario */
-.fotoUsuario {
-  height: 100px; }
-
-/* Fin Foto usuario */
-/*Lista de quedadas*/
 a {
-  color: #00B7FF; }
+  color: #00B7FF;
+}
 
 li {
   border-top: 1px solid #ddd;
-  padding: 10px; }
-  li:nth-of-type(odd) {
-    background-color: #eee; }
+  padding: 10px;
+}
 
-/*FIN Lista de quedadas*/
+li:nth-of-type(odd) {
+  background-color: #eee;
+}
+
+h2 {
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  h2 {
+    text-align: left;
+  }
+}
+
 /*PARA EL LOGIN*/
 body#LoginForm {
   background-image: url("https://hdwallsource.com/img/2014/9/blur-26347-27038-hd-wallpapers.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  padding: 10px; }
+  padding: 10px;
+}
 
 .form-heading {
   color: #fff;
-  font-size: 23px; }
+  font-size: 23px;
+}
 
 .panel h2 {
   color: #444444;
   font-size: 18px;
-  margin: 0 0 8px 0; }
+  margin: 0 0 8px 0;
+}
 
 .panel p {
   color: #777777;
   font-size: 14px;
   margin-bottom: 30px;
-  line-height: 24px; }
+  line-height: 24px;
+}
 
 .login-form {
-  text-align: center; }
-  .login-form .form-control {
-    background: #f7f7f7 none repeat scroll 0 0;
-    border: 1px solid #d4d4d4;
-    border-radius: 4px;
-    font-size: 14px;
-    height: 50px;
-    line-height: 50px; }
-  .login-form .form-group {
-    margin-bottom: 10px; }
-  .login-form .btn.btn-primary {
-    background: #f0ad4e none repeat scroll 0 0;
-    border-color: #f0ad4e;
-    color: #ffffff;
-    font-size: 14px;
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
-    padding: 0; }
-    .login-form .btn.btn-primary.reset {
-      background: #ff9900 none repeat scroll 0 0; }
+  text-align: center;
+}
+
+.login-form .form-control {
+  background: #f7f7f7 none repeat scroll 0 0;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 50px;
+  line-height: 50px;
+}
+
+.login-form .form-group {
+  margin-bottom: 10px;
+}
+
+.login-form .btn.btn-primary {
+  background: #f0ad4e none repeat scroll 0 0;
+  border-color: #f0ad4e;
+  color: #ffffff;
+  font-size: 14px;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding: 0;
+}
+
+.login-form .btn.btn-primary.reset {
+  background: #ff9900 none repeat scroll 0 0;
+}
 
 .main-div {
   background: #ffffff none repeat scroll 0 0;
   border-radius: 2px;
   margin: 10px auto 30px;
   max-width: 38%;
-  padding: 50px 70px 70px 71px; }
+  padding: 50px 70px 70px 71px;
+}
 
 .forgot {
   text-align: left;
-  margin-bottom: 30px; }
-  .forgot a {
-    color: #777777;
-    font-size: 14px;
-    text-decoration: underline; }
+  margin-bottom: 30px;
+}
+
+.forgot a {
+  color: #777777;
+  font-size: 14px;
+  text-decoration: underline;
+}
 
 .botto-text {
   color: #ffffff;
   font-size: 14px;
-  margin: auto; }
+  margin: auto;
+}
 
 .back {
   text-align: left;
-  margin-top: 10px; }
-  .back a {
-    color: #444444;
-    font-size: 13px;
-    text-decoration: none; }
+  margin-top: 10px;
+}
+
+.back a {
+  color: #444444;
+  font-size: 13px;
+  text-decoration: none;
+}
 
 /*FIN EL LOGIN*/
-/*PARA EL MAPA*/
-/* Always set the map height explicitly to define the size of the div
- * element that contains the map. */
-#map {
-  height: 65%; }
-  #map #infowindow-content {
-    display: inline; }
-
-#description {
-  font-family: Roboto;
-  font-size: 15px;
-  font-weight: 300; }
-
-#infowindow-content {
-  display: none; }
-  #infowindow-content .title {
-    font-weight: bold; }
-
-.pac-card {
-  margin: 10px 10px 0 0;
-  border-radius: 2px 0 0 2px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  outline: none;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  background-color: #fff;
-  font-family: Roboto; }
-
-#pac-container {
-  padding-bottom: 12px;
-  margin-right: 12px;
-  margin-top: 12px; }
-
-.pac-controls {
-  display: inline-block;
-  padding: 5px 11px; }
-  .pac-controls label {
-    font-family: Roboto;
-    font-size: 13px;
-    font-weight: 300; }
-
-#pac-input {
-  background-color: #fff;
-  font-family: Roboto;
-  font-size: 15px;
-  font-weight: 300;
-  margin-left: 12px;
-  padding: 0 11px 0 13px;
-  text-overflow: ellipsis;
-  width: 400px; }
-  #pac-input:focus {
-    border-color: #4d90fe; }
-
-#title {
-  color: #fff;
-  background-color: #4d90fe;
-  font-size: 25px;
-  font-weight: 500;
-  padding: 6px 12px; }
-
-/*FINAL - PARA EL MAPA*/

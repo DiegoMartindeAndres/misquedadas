@@ -7,11 +7,12 @@
 		"uuidString": "8F7ECCE5-7482-4275-9C9B-BBA52BD6302A"
 		}
 	],
-"creatorBuild": "28905",
+"creatorBuild": "29156",
 "files": {
 	"/.editorconfig": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/.editorconfig",
 		"oF": 0
@@ -19,6 +20,7 @@
 	"/.gitignore": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/.gitignore",
 		"oF": 0
@@ -31,7 +33,41 @@
 		"oO": 0,
 		"oS": 1
 		},
+	"/app/android-chrome-192x192.png": {
+		"ft": 32768,
+		"iS": 28103,
+		"oA": 0,
+		"oAP": "/app/android-chrome-192x192.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"/app/android-chrome-512x512.png": {
+		"ft": 32768,
+		"iS": 89437,
+		"oA": 0,
+		"oAP": "/app/android-chrome-512x512.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"/app/apple-touch-icon.png": {
+		"ft": 32768,
+		"iS": 25900,
+		"oA": 0,
+		"oAP": "/app/apple-touch-icon.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"/app/application.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -42,6 +78,7 @@
 		"tS": 0
 		},
 	"/app/args.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -52,6 +89,7 @@
 		"tS": 0
 		},
 	"/app/config-util.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -62,6 +100,7 @@
 		"tS": 0
 		},
 	"/app/configPassport.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -72,6 +111,7 @@
 		"tS": 0
 		},
 	"/app/configure.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -82,6 +122,7 @@
 		"tS": 0
 		},
 	"/app/db.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -92,6 +133,7 @@
 		"tS": 0
 		},
 	"/app/executor.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -101,7 +143,38 @@
 		"sC": 3,
 		"tS": 0
 		},
+	"/app/favicon-16x16.png": {
+		"ft": 32768,
+		"iS": 689,
+		"oA": 0,
+		"oAP": "/app/favicon-16x16.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"/app/favicon-32x32.png": {
+		"ft": 32768,
+		"iS": 1384,
+		"oA": 0,
+		"oAP": "/app/favicon-32x32.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"/app/favicon.ico": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/favicon.ico",
+		"oF": 0
+		},
 	"/app/http-status.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -112,6 +185,7 @@
 		"tS": 0
 		},
 	"/app/info.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -122,6 +196,7 @@
 		"tS": 0
 		},
 	"/app/logger.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -132,6 +207,7 @@
 		"tS": 0
 		},
 	"/app/middleware.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -141,12 +217,80 @@
 		"sC": 3,
 		"tS": 0
 		},
-	"/app/public/css/_vars": {
-		"cB": 0,
-		"ft": 8192,
+	"/app/public/css/_floating-card.sass": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 2,
+		"ma": 0,
 		"oA": 1,
-		"oAP": "/app/public/css/_vars",
-		"oF": 0
+		"oAP": "/app/public/css/_floating-card.css",
+		"oF": 0,
+		"oS": 1,
+		"uL": 1
+		},
+	"/app/public/css/_map.sass": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 2,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/app/public/css/_map.css",
+		"oF": 0,
+		"oS": 1,
+		"uL": 1
+		},
+	"/app/public/css/_nav.sass": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 2,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/app/public/css/_nav.css",
+		"oF": 0,
+		"oS": 1,
+		"uL": 1
+		},
+	"/app/public/css/_reset.sass": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 2,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/app/public/css/_reset.css",
+		"oF": 0,
+		"oS": 1,
+		"uL": 1
+		},
+	"/app/public/css/_vars.sass": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 2,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/app/public/css/_vars.css",
+		"oF": 0,
+		"oS": 1,
+		"uL": 1
+		},
+	"/app/public/css/main.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/app/public/css/main-min.css",
+		"oF": 0,
+		"oS": 3
 		},
 	"/app/public/css/main.sass": {
 		"aP": 0,
@@ -238,6 +382,7 @@
 		"q": 100
 		},
 	"/app/public/js/json-formdata.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -247,7 +392,19 @@
 		"sC": 3,
 		"tS": 0
 		},
+	"/app/public/js/moment.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/app/public/js/moment-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"/app/router/api-asiste.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -258,6 +415,7 @@
 		"tS": 0
 		},
 	"/app/router/api-mysql.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -268,6 +426,7 @@
 		"tS": 0
 		},
 	"/app/router/api-quedada.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -278,6 +437,7 @@
 		"tS": 0
 		},
 	"/app/router/api-sitio.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -288,6 +448,7 @@
 		"tS": 0
 		},
 	"/app/router/api-usuario.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -298,6 +459,7 @@
 		"tS": 0
 		},
 	"/app/router/login.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -308,6 +470,7 @@
 		"tS": 0
 		},
 	"/app/router/quedada.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -318,6 +481,7 @@
 		"tS": 0
 		},
 	"/app/router/sitio.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -328,6 +492,7 @@
 		"tS": 0
 		},
 	"/app/router/usuario.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -338,6 +503,7 @@
 		"tS": 0
 		},
 	"/app/service/add-asiste.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -348,6 +514,7 @@
 		"tS": 0
 		},
 	"/app/service/add-quedada.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -358,6 +525,7 @@
 		"tS": 0
 		},
 	"/app/service/add-sitio.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -368,6 +536,7 @@
 		"tS": 0
 		},
 	"/app/service/get-asiste.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -378,6 +547,7 @@
 		"tS": 0
 		},
 	"/app/service/get-coordenadasQuedada.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -388,6 +558,7 @@
 		"tS": 0
 		},
 	"/app/service/get-databases.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -398,6 +569,7 @@
 		"tS": 0
 		},
 	"/app/service/get-imagenUsuario.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -408,6 +580,7 @@
 		"tS": 0
 		},
 	"/app/service/get-quedada.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -418,6 +591,7 @@
 		"tS": 0
 		},
 	"/app/service/get-quedadas.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -428,6 +602,7 @@
 		"tS": 0
 		},
 	"/app/service/get-sitios.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -438,6 +613,7 @@
 		"tS": 0
 		},
 	"/app/service/get-sitiosBorrables.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -448,6 +624,7 @@
 		"tS": 0
 		},
 	"/app/service/get-usuario.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -458,6 +635,7 @@
 		"tS": 0
 		},
 	"/app/service/get-usuarios.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -468,6 +646,7 @@
 		"tS": 0
 		},
 	"/app/service/remove-asiste.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -478,6 +657,7 @@
 		"tS": 0
 		},
 	"/app/service/remove-quedada.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -488,6 +668,7 @@
 		"tS": 0
 		},
 	"/app/service/remove-sitio.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -498,6 +679,7 @@
 		"tS": 0
 		},
 	"/app/shutdown.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -510,6 +692,7 @@
 	"/app/views/404.ejs": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/app/views/404.ejs",
 		"oF": 0
@@ -517,6 +700,7 @@
 	"/app/views/error.ejs": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/app/views/error.ejs",
 		"oF": 0
@@ -524,6 +708,7 @@
 	"/app/views/footer.ejs": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/app/views/footer.ejs",
 		"oF": 0
@@ -531,6 +716,7 @@
 	"/app/views/head.ejs": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/app/views/head.ejs",
 		"oF": 0
@@ -538,6 +724,7 @@
 	"/app/views/head2.ejs": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/app/views/head2.ejs",
 		"oF": 0
@@ -545,13 +732,23 @@
 	"/app/views/login.ejs": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/app/views/login.ejs",
+		"oF": 0
+		},
+	"/app/views/nav.ejs": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/views/nav.ejs",
 		"oF": 0
 		},
 	"/app/views/nuevoQuedada.ejs": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/app/views/nuevoQuedada.ejs",
 		"oF": 0
@@ -559,6 +756,7 @@
 	"/app/views/nuevoSitio.ejs": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/app/views/nuevoSitio.ejs",
 		"oF": 0
@@ -566,6 +764,7 @@
 	"/app/views/quedadas.ejs": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/app/views/quedadas.ejs",
 		"oF": 0
@@ -573,6 +772,7 @@
 	"/app/views/user.ejs": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/app/views/user.ejs",
 		"oF": 0
@@ -580,6 +780,7 @@
 	"/app/views/usuario.ejs": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/app/views/usuario.ejs",
 		"oF": 0
@@ -587,6 +788,7 @@
 	"/hero.txt": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/hero.txt",
 		"oF": 0
@@ -602,6 +804,7 @@
 	"/man.txt": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/man.txt",
 		"oF": 0
@@ -617,6 +820,7 @@
 	"/misquedadas-2.pid": {
 		"cB": 0,
 		"ft": 8192,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/misquedadas-2.pid",
 		"oF": 0
@@ -651,6 +855,7 @@
 		"ema": 1,
 		"eSQ": 1,
 		"ft": 4096,
+		"hM": 0,
 		"oA": 0,
 		"oAP": "/readme.html",
 		"oF": 0,
@@ -662,6 +867,7 @@
 		"uCM": 0
 		},
 	"/server.js": {
+		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
@@ -680,7 +886,7 @@
 	"creationDate": 579633608.22155702,
 	"displayValue": "misquedadas",
 	"displayValueWasSetByUser": 0,
-	"iconImageName": "meme-doge",
+	"iconImageName": "/app/apple-touch-icon.png",
 	"iconImageWasSetByUser": 0
 	},
 "projectSettings": {
@@ -766,6 +972,12 @@
 		"function-sent": {
 			"active": 0
 			},
+		"inline-consecutive-adds": {
+			"active": 0
+			},
+		"inline-environment-variables": {
+			"active": 0
+			},
 		"instanceof": {
 			"active": 0
 			},
@@ -785,6 +997,36 @@
 			"active": 0
 			},
 		"minify-booleans": {
+			"active": 0
+			},
+		"minify-builtins": {
+			"active": 0
+			},
+		"minify-constant-folding": {
+			"active": 0
+			},
+		"minify-dead-code-elimination": {
+			"active": 0
+			},
+		"minify-flip-comparisons": {
+			"active": 0
+			},
+		"minify-guarded-expressions": {
+			"active": 0
+			},
+		"minify-infinity": {
+			"active": 0
+			},
+		"minify-mangle-names": {
+			"active": 0
+			},
+		"minify-numeric-literals": {
+			"active": 0
+			},
+		"minify-simplify": {
+			"active": 0
+			},
+		"minify-type-constructors": {
 			"active": 0
 			},
 		"modules-amd": {
@@ -835,6 +1077,9 @@
 		"pipeline-operator": {
 			"active": 0
 			},
+		"private-methods": {
+			"active": 0
+			},
 		"property-literals": {
 			"active": 0
 			},
@@ -868,10 +1113,16 @@
 		"regenerator": {
 			"active": 0
 			},
+		"regexp-constructors": {
+			"active": 0
+			},
 		"remove-console": {
 			"active": 0
 			},
 		"remove-debugger": {
+			"active": 0
+			},
+		"remove-undefined": {
 			"active": 0
 			},
 		"reserved-words": {
@@ -1820,6 +2071,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"no-useless-catch": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-useless-computed-key": {
 			"active": 0,
 			"optionString": ""
@@ -2482,6 +2737,7 @@
 		"noEscapeInAttributes": 0,
 		"outputFormat": 2,
 		"shouldRunCacheBuster": 0,
+		"shouldRunHTMLMinifier": 0,
 		"useCDATA": 0,
 		"useDoubleQuotes": 0,
 		"useUnixNewlines": 0
@@ -2503,6 +2759,7 @@
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
+		"bundleFormat": 0,
 		"createSourceMap": 0,
 		"minifyOutput": 1,
 		"syntaxCheckerStyle": 3,
@@ -2525,7 +2782,8 @@
 		"autoOutputPathReplace1": "kit",
 		"autoOutputPathReplace2": "html",
 		"autoOutputPathStyle": 0,
-		"shouldRunCacheBuster": 0
+		"shouldRunCacheBuster": 0,
+		"shouldRunHTMLMinifier": 0
 		},
 	"languageDefaultsLESS": {
 		"allowInsecureImports": 0,
@@ -2564,6 +2822,7 @@
 		"processHTML": 0,
 		"randomFootnoteNumbers": 0,
 		"shouldRunCacheBuster": 0,
+		"shouldRunHTMLMinifier": 0,
 		"useCompatibilityMode": 0
 		},
 	"languageDefaultsOTHER": {
@@ -2573,7 +2832,8 @@
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
-		"shouldRunCacheBuster": 0
+		"shouldRunCacheBuster": 0,
+		"shouldRunHTMLMinifier": 0
 		},
 	"languageDefaultsPNG": {
 		"autoOutputAction": 0,
@@ -2594,7 +2854,8 @@
 		"autoOutputPathStyle": 0,
 		"compileDebug": 1,
 		"outputStyle": 0,
-		"shouldRunCacheBuster": 0
+		"shouldRunCacheBuster": 0,
+		"shouldRunHTMLMinifier": 0
 		},
 	"languageDefaultsSASS": {
 		"autoOutputAction": 0,
@@ -2623,7 +2884,8 @@
 		"outputFormat": 0,
 		"outputStyle": 1,
 		"railsCompatible": 0,
-		"shouldRunCacheBuster": 0
+		"shouldRunCacheBuster": 0,
+		"shouldRunHTMLMinifier": 0
 		},
 	"languageDefaultsSTYLUS": {
 		"autoOutputAction": 0,
@@ -2711,16 +2973,20 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"ascii_only": {
-			"active": 0,
+		"arrows": {
+			"active": 1,
 			"flagValue": -1
 			},
-		"bare_returns": {
+		"ascii_only": {
 			"active": 0,
 			"flagValue": -1
 			},
 		"booleans": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"booleans_as_integers": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"braces": {
@@ -2739,7 +3005,7 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"compress": {
+		"computed_props": {
 			"active": 1,
 			"flagValue": -1
 			},
@@ -2762,6 +3028,10 @@
 		"drop_debugger": {
 			"active": 1,
 			"flagValue": -1
+			},
+		"ecma": {
+			"active": 1,
+			"flagValue": 5
 			},
 		"eval": {
 			"active": 0,
@@ -2787,10 +3057,6 @@
 			"active": 0,
 			"flagValue": -1
 			},
-		"html5_comments": {
-			"active": 1,
-			"flagValue": -1
-			},
 		"ie8": {
 			"active": 0,
 			"flagValue": -1
@@ -2799,13 +3065,13 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"indent-start": {
-			"active": 0,
-			"flagValue": 0
-			},
 		"indent_level": {
 			"active": 0,
 			"flagValue": 4
+			},
+		"indent_start": {
+			"active": 0,
+			"flagValue": 0
 			},
 		"inline": {
 			"active": 1,
@@ -2817,6 +3083,10 @@
 			},
 		"join_vars": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"keep_classnames": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"keep_fargs": {
@@ -2839,13 +3109,13 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"mangle": {
-			"active": 1,
-			"flagValue": -1
-			},
 		"max_line_len": {
 			"active": 1,
 			"flagValue": 32000
+			},
+		"module": {
+			"active": 0,
+			"flagValue": -1
 			},
 		"negate_iife": {
 			"active": 1,
@@ -2854,10 +3124,6 @@
 		"passes": {
 			"active": 1,
 			"flagValue": 1
-			},
-		"preserve_line": {
-			"active": 0,
-			"flagValue": -1
 			},
 		"properties": {
 			"active": 1,
@@ -2881,6 +3147,10 @@
 			},
 		"reduce_vars": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"safari10": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"semicolons": {
@@ -2915,6 +3185,10 @@
 			"active": 0,
 			"flagValue": -1
 			},
+		"unsafe_arrows": {
+			"active": 0,
+			"flagValue": -1
+			},
 		"unsafe_comps": {
 			"active": 0,
 			"flagValue": -1
@@ -2924,6 +3198,10 @@
 			"flagValue": -1
 			},
 		"unsafe_math": {
+			"active": 0,
+			"flagValue": -1
+			},
+		"unsafe_methods": {
 			"active": 0,
 			"flagValue": -1
 			},
@@ -2951,15 +3229,12 @@
 			"active": 0,
 			"flagValue": -1
 			},
-		"width": {
-			"active": 1,
-			"flagValue": 80
-			},
 		"wrap_iife": {
 			"active": 0,
 			"flagValue": -1
 			}
 		},
+	"uglifyMangleNames": 1,
 	"uglifyReservedNamesString": "$,exports,require",
 	"websiteRelativeRoot": ""
 	},

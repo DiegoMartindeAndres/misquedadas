@@ -1,6 +1,8 @@
-body
-  padding: 50px
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
+@import vars
+@import reset
+@import nav
+@import map
+@import floating-card
 
 footer
   background-color: #fff
@@ -14,27 +16,6 @@ footer
   .copyright
       opacity: .5
       line-height: 1.7
-
-/*Objetos en columna con scroll*/
-.card
-  display: flex
-  height: 65%
-  overflow-x: auto
-  border: 0px !important
-
-.card--content
-  margin: 2px
-  padding: 2px
-
-/*Fin Objetos en columna con scroll*/
-
-/* Foto usuario */
-.fotoUsuario
-  height: 100px
-/* Fin Foto usuario */
-
-/*Lista de quedadas*/
-
 a
   color: #00B7FF
 li
@@ -42,8 +23,10 @@ li
   padding: 10px
   &:nth-of-type(odd)
       background-color: #eee
-/*FIN Lista de quedadas*/
-
+h2
+  text-align: center
+  @media (min-width: $mobile-width)
+    text-align: left
 /*PARA EL LOGIN*/
 body#LoginForm
   background-image: url("https://hdwallsource.com/img/2014/9/blur-26347-27038-hd-wallpapers.jpg")
@@ -113,66 +96,3 @@ body#LoginForm
     text-decoration: none
 
 /*FIN EL LOGIN*/
-
-/*PARA EL MAPA*/
-/* Always set the map height explicitly to define the size of the div
- * element that contains the map. */
-#map
-  height: 65%
-  #infowindow-content
-    display: inline
-
-#description
-  font-family: Roboto
-  font-size: 15px
-  font-weight: 300
-
-#infowindow-content
-  display: none
-  .title
-    font-weight: bold
-
-.pac-card
-  margin: 10px 10px 0 0
-  border-radius: 2px 0 0 2px
-  box-sizing: border-box
-  -moz-box-sizing: border-box
-  outline: none
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3)
-  background-color: #fff
-  font-family: Roboto
-
-#pac-container
-  padding-bottom: 12px
-  margin-right: 12px
-  margin-top: 12px
-
-.pac-controls
-  display: inline-block
-  padding: 5px 11px
-  label
-    font-family: Roboto
-    font-size: 13px
-    font-weight: 300
-
-#pac-input
-  background-color: #fff
-  font-family: Roboto
-  font-size: 15px
-  font-weight: 300
-  margin-left: 12px
-  padding: 0 11px 0 13px
-  text-overflow: ellipsis
-  width: 400px
-  &:focus
-    border-color: #4d90fe
-
-#title
-  color: #fff
-  background-color: #4d90fe
-  font-size: 25px
-  font-weight: 500
-  padding: 6px 12px
-
-
-/*FINAL - PARA EL MAPA*/

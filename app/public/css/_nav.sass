@@ -1,0 +1,51 @@
+nav.flex
+  display: flex
+  position: fixed
+  top: 0
+  flex-direction: row
+  justify-content: center
+  align-content: center
+  align-items: center
+  width: 100%
+  height: $nav-height
+  background-color: white
+  &.scrolled
+    box-shadow: $shadow-nav
+  a
+    color: $text-color
+  .nav-icon
+    flex: 0 1 auto
+    display: flex
+    justify-content: center
+    align-items: center
+    align-content: center
+    height: 100%
+    padding: 20px
+    i
+      flex: 1 0 auto
+      font-size: 30
+      color: $color-1
+  .user
+    flex: 1 0 auto
+    text-align: center
+    .fotoUsuario
+      height: 45%
+    .nombreUsuario
+      font-weight: normal
+      font-size: 20
+      display: inline-block
+      margin-left: 10px
+  @media (min-width: $mobile-width)
+    height: $nav-height-desktop
+    .user
+      .fotoUsuario
+        height: 62%
+      .nombreUsuario
+        display: block
+        margin: 0
+    &.scrolled
+      height: $nav-height-scrolled
+      .user
+        .nombreUsuario
+          display: inline-block
+          margin-left: 10px
