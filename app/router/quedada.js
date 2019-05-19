@@ -78,7 +78,7 @@ module.exports = function (app,passport) {
 
         if (values[0][0]){
           var primeraQue = values[0][0];
-          //console.log(primeraQue);
+          console.log("/////////////////////////////////////////////"+primeraQue);
           res.redirect(301,'/quedada/'+primeraQue);
         } else {
           res.render('error',{message:"Parece que no tienes ninguna quedada en la BBDD.", error:""});
@@ -154,7 +154,7 @@ module.exports = function (app,passport) {
             var lng = _.trim(arrayCoordenada[1]);
 
             var asiste = asistentes.includes(usuario);
-            //console.log(quedadas,datosQuedada,asistentes,coordenada,asiste);
+            console.log('Datos quedada: ' + datosQuedada[0].que + ' ' + datosQuedada[0].dia + ' ' + datosQuedada[0].restante);
             res.render('quedadas',{quedadas:quedadas, quedada:datosQuedada[0], asistentes:asistentes, lat:lat, lng:lng , user:usuario, asiste:asiste, GoogleMapsAPIkey:def.GoogleMapsAPIkey});
           });
         });
