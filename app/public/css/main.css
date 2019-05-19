@@ -177,6 +177,9 @@ nav.flex .user .nombreUsuario {
   .map-container {
     padding: 0 15;
   }
+  .map-container #map {
+    height: 100%;
+  }
   .map-container #map .gmnoprint {
     display: block;
   }
@@ -188,12 +191,28 @@ nav.flex .user .nombreUsuario {
 /*FINAL - PARA EL MAPA*/
 .floating-card {
   background-color: white;
-  box-shadow: -1px 16px 20px -10px rgba(0, 0, 0, 0.3);
+  margin: auto -15;
   padding: 15;
 }
 
 .floating-card.info-container .info-item {
   margin-top: 15;
+}
+
+.floating-card.info-container .info-item h6 {
+  font-weight: bold;
+}
+
+.floating-card.info-container .info-item .data {
+  margin-left: 15;
+  line-height: 1.5;
+}
+
+@media (min-width: 576px) {
+  .floating-card {
+    box-shadow: -1px 16px 20px -10px rgba(0, 0, 0, 0.3);
+    margin: auto;
+  }
 }
 
 footer {
@@ -213,15 +232,6 @@ footer .copyright {
 
 a {
   color: #00B7FF;
-}
-
-li {
-  border-top: 1px solid #ddd;
-  padding: 10px;
-}
-
-li:nth-of-type(odd) {
-  background-color: #eee;
 }
 
 h2 {

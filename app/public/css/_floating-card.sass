@@ -1,9 +1,18 @@
 .floating-card
   background-color: white
-  box-shadow: $shadow-nav
+  //box-shadow: $shadow-nav
+  //width: 100vw
+  margin: auto -15
   padding: 15
   &.info-container
     .info-item
       margin-top: 15
       h6
         //border-bottom: 1px $color-4 solid
+        font-weight: bold
+      .data
+        margin-left: 15
+        line-height: 1.5
+  @media (min-width: $mobile-width)
+    box-shadow: $shadow-nav
+    margin: auto

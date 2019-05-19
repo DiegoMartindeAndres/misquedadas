@@ -4,56 +4,43 @@
 
   <div class="row">
 
-    <div class="col-sm-8 map-container">
+    <div class="col-sm-7 map-container">
       <div id="map"></div>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-5">
       <h2><%= quedada.que %></h2>
       <div class="info-container floating-card ">
         <div class="info-item">
           <h6>CUÁNDO</h6>
-          <strong>Día: </strong><%= quedada.dia %><br>
-          <strong>Hora: </strong><%= quedada.hora %><br>
-          <%= quedada.restante %><br>
+          <div class="data">
+            <%= quedada.dia %><br>
+            <%= quedada.hora %><br><br>
+            <%= quedada.restante %><br>
+          </div>
         </div>
         <div class="info-item">
         <h6>DÓNDE</h6>
-          <strong>Dirección: </strong><%= quedada.direccion %><br>
-          <strong>Latitud: </strong><%= lat %><strong> Longitud: </strong><%= lng %><br>
+          <div class="data">
+            <strong>Sitio: </strong><%= quedada.direccion %><br>
+            <strong>Coordenadas: </strong>(<%= lat %>,<%= lng %>)<br><br>
+
+            <a href='https://www.google.com/maps/place/?q=<%= lat %>,<%= lng %>'>Abrir en Google Maps <i class="far fa-share-square"></i></a>
+
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-sm-2 lista-asistentes-container">
-      <div class="d-flex flex-column justify-content-between">
-        <div class = "card align-items-stretch">
-          <h3>Asistentes:</h3>
-          <div class="d-flex flex-column">
-          <% for(var i=0; i<asistentes.length; i++) { %>
-            <div class="card--content">
-              <a>
-                <img  src="/img/<%= asistentes[i] %>.jpg" alt="<%= asistentes[i] %>" title="<%= asistentes[i] %>"><br>
-              </a>
-            </div>
-
-          <% } %>
-        </div>
-        </div>
-     </div>
     </div>
   </div>
   <div class="row">
         <div class="col-sm-2">
-
           <a id="botonNuevaQuedada" href="/quedada/nuevo" class="btn btn-success btn-sm btn-block">Nueva Quedada</a>
           <br>
           <form method="post" action="/quedada/<%= quedada.que %>?_method=delete">
             <button class="btn btn-danger btn-sm btn-block" type="submit"  onClick="return confirm('Se va a borrar: <%= quedada.que %>');">Borrar</button>
           </form>
-
-
         </div>
-        <div class="col-sm-8 lista-quedadas-container">
 
+        <div class="col-sm-6 lista-quedadas-container">
           <div class="d-flex justify-content-between">
             <div>
               <div class = "card align-items-stretch">
@@ -75,6 +62,25 @@
             </div>
           </div>
         </div>
+
+        <div class="col-sm-2 lista-asistentes-container">
+          <div class="d-flex flex-column justify-content-between">
+            <div class = "card align-items-stretch">
+              <h3>Asistentes:</h3>
+              <div class="d-flex flex-column">
+              <% for(var i=0; i<asistentes.length; i++) { %>
+                <div class="card--content">
+                  <a>
+                    <img  src="/img/<%= asistentes[i] %>.jpg" alt="<%= asistentes[i] %>" title="<%= asistentes[i] %>"><br>
+                  </a>
+                </div>
+
+              <% } %>
+            </div>
+            </div>
+         </div>
+        </div>
+
         <div class="col-sm-2">
             <%if (asiste == false ) { %>
               <form method="post" action="/api/asiste/?que=<%= quedada.que %>&nombre=<%= user %>">
