@@ -1,0 +1,20 @@
+.lista-asistentes-container
+  padding: 15
+  @media(max-width: $mobile-width)
+    position: absolute
+    padding: 0
+    width: 100vw
+    overflow-x: scroll
+    top: calc(100vw + 100px)
+    transform: translateY(-50%)
+    .asistente-item
+      border-radius: 100%
+      border-top: 3px solid $color-4
+      border-left: 3px solid $color-4
+      border-right: 3px solid $color-4
+      overflow: hidden
+      margin-left: 15
+      img
+        height: 10vw
+    h3
+      display: none

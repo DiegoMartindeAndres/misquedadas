@@ -217,6 +217,32 @@
 		"sC": 3,
 		"tS": 0
 		},
+	"/app/public/css/_asistentes.sass": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 2,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/app/public/css/_asistentes.css",
+		"oF": 0,
+		"oS": 1,
+		"uL": 1
+		},
+	"/app/public/css/_botones.sass": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 2,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/app/public/css/_botones.css",
+		"oF": 0,
+		"oS": 1,
+		"uL": 1
+		},
 	"/app/public/css/_floating-card.sass": {
 		"aP": 0,
 		"bl": 0,

@@ -4,10 +4,10 @@
 
   <div class="row">
 
-    <div class="col-sm-7 map-container">
+    <div class="col-md-7 map-container">
       <div id="map"></div>
     </div>
-    <div class="col-sm-5">
+    <div class="col-md-5 mr-auto">
       <h2><%= quedada.que %></h2>
       <div class="info-container floating-card ">
         <div class="info-item">
@@ -29,10 +29,34 @@
           </div>
         </div>
       </div>
+      <%if (asiste == false ) { %>
+        <form method="post" action="/api/asiste/?que=<%= quedada.que %>&nombre=<%= user %>">
+          <button class="btn btn-success btn-lg btn-block" type="submit"  onClick="return confirm('¿Confirmas asistir a la quedada <%= quedada.que %>?');" >Asistir</button>
+        </form>
+      <% } else{ %>
+        <form method="post" action="/api/asiste/?que=<%= quedada.que %>&nombre=<%= user %>">
+          <button type="submit" class="btn btn-danger btn-lg btn-block" onClick="return confirm('¿Confirmas dejar de asistir a la quedada <%= quedada.que %>?');">No asistir</button>
+        </form>
+      <% } %>
     </div>
   </div>
   <div class="row">
-        <div class="col-sm-2">
+    <div class="lista-asistentes-container">
+      <h3>Asistentes</h3>
+      <div class="d-flex flex-row">
+        <% for(var i=0; i<asistentes.length; i++) { %>
+          <div class="asistente-item">
+            <a>
+              <img  src="/img/<%= asistentes[i] %>.jpg" alt="<%= asistentes[i] %>" title="<%= asistentes[i] %>"><br>
+            </a>
+          </div>
+
+        <% } %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+        <div class="col-sm">
           <a id="botonNuevaQuedada" href="/quedada/nuevo" class="btn btn-success btn-sm btn-block">Nueva Quedada</a>
           <br>
           <form method="post" action="/quedada/<%= quedada.que %>?_method=delete">
@@ -40,7 +64,7 @@
           </form>
         </div>
 
-        <div class="col-sm-6 lista-quedadas-container">
+        <div class="col-sm lista-quedadas-container">
           <div class="d-flex justify-content-between">
             <div>
               <div class = "card align-items-stretch">
@@ -63,35 +87,6 @@
           </div>
         </div>
 
-        <div class="col-sm-2 lista-asistentes-container">
-          <div class="d-flex flex-column justify-content-between">
-            <div class = "card align-items-stretch">
-              <h3>Asistentes:</h3>
-              <div class="d-flex flex-column">
-              <% for(var i=0; i<asistentes.length; i++) { %>
-                <div class="card--content">
-                  <a>
-                    <img  src="/img/<%= asistentes[i] %>.jpg" alt="<%= asistentes[i] %>" title="<%= asistentes[i] %>"><br>
-                  </a>
-                </div>
-
-              <% } %>
-            </div>
-            </div>
-         </div>
-        </div>
-
-        <div class="col-sm-2">
-            <%if (asiste == false ) { %>
-              <form method="post" action="/api/asiste/?que=<%= quedada.que %>&nombre=<%= user %>">
-                <button class="btn btn-success btn-lg btn-block" type="submit"  onClick="return confirm('¿Confirmas asistir a la quedada <%= quedada.que %>?');" >Asistir</button>
-              </form>
-            <% } else{ %>
-              <form method="post" action="/api/asiste/?que=<%= quedada.que %>&nombre=<%= user %>">
-                <button type="submit" class="btn btn-danger btn-lg btn-block" onClick="return confirm('¿Confirmas dejar de asistir a la quedada <%= quedada.que %>?');">No asistir</button>
-              </form>
-            <% } %>
-        </div>
   </div>
 </div>
 <% include footer %>

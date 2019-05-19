@@ -6,9 +6,27 @@ body {
   padding-top: 100px;
 }
 
-@media (min-width: 576px) {
+body h2 {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+body h3 {
+  text-transform: uppercase;
+}
+
+body a {
+  color: #00B7FF;
+}
+
+@media (min-width: 768px) {
   body {
     padding-top: 200px;
+  }
+  body h2 {
+    line-height: 50%;
+    margin-bottom: 30;
+    text-align: left;
   }
 }
 
@@ -26,7 +44,7 @@ nav.flex {
 }
 
 nav.flex.scrolled {
-  box-shadow: -1px 16px 20px -10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.3);
 }
 
 nav.flex a {
@@ -90,6 +108,7 @@ nav.flex .user .nombreUsuario {
  * element that contains the map. */
 .map-container {
   padding: 0;
+  margin-bottom: 10vw;
 }
 
 .map-container #map {
@@ -175,10 +194,11 @@ nav.flex .user .nombreUsuario {
 
 @media (min-width: 576px) {
   .map-container {
-    padding: 0 15;
+    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.3);
+    border-radius: 0.3rem;
   }
   .map-container #map {
-    height: 100%;
+    height: 450px;
   }
   .map-container #map .gmnoprint {
     display: block;
@@ -208,10 +228,58 @@ nav.flex .user .nombreUsuario {
   line-height: 1.5;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 768px) {
   .floating-card {
-    box-shadow: -1px 16px 20px -10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.3);
     margin: auto;
+    margin-bottom: 15;
+    border-radius: 0.3rem;
+  }
+}
+
+.btn.btn-block {
+  margin: auto -15;
+  width: 100vw;
+  border-radius: 0;
+}
+
+@media (min-width: 576px) {
+  .btn.btn-block {
+    margin: auto;
+    width: 100%;
+    border-radius: 0.3rem;
+  }
+  .btn.btn-block.btn-success {
+    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.lista-asistentes-container {
+  padding: 15;
+}
+
+@media (max-width: 576px) {
+  .lista-asistentes-container {
+    position: absolute;
+    padding: 0;
+    width: 100vw;
+    overflow-x: scroll;
+    top: calc(100vw + 100px);
+    transform: translateY(-50%);
+  }
+  .lista-asistentes-container .asistente-item {
+    border-radius: 100%;
+    border-top: 3px solid #3b8686;
+    border-left: 3px solid #3b8686;
+    border-right: 3px solid #3b8686;
+    overflow: hidden;
+    margin-left: 15;
+  }
+  .lista-asistentes-container .asistente-item img {
+    height: 10vw;
+  }
+  .lista-asistentes-container h3 {
+    display: none;
   }
 }
 
@@ -228,20 +296,6 @@ footer {
 footer .copyright {
   opacity: .5;
   line-height: 1.7;
-}
-
-a {
-  color: #00B7FF;
-}
-
-h2 {
-  text-align: center;
-}
-
-@media (min-width: 576px) {
-  h2 {
-    text-align: left;
-  }
 }
 
 /*PARA EL LOGIN*/
