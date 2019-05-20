@@ -64,10 +64,12 @@ module.exports.execute = function (parametros) {
         var hora = moment("2013-02-08 " + databases[0].hora).format('HH:mm');
         var fecha = moment(dia +' '+ hora);
 
+
+
         if(moment().isBefore(fecha)){
           var restante = "Quedan " + fecha.fromNow(true) + " para este evento";
         } else{
-          var restante = "Este evento ya ha pasado";
+          var restante = "Este evento ya ha pasado...";
         }
         objeto.dia = fecha.format('dddd DD MMMM YYYY').toUpperCase();
 

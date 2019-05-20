@@ -1,5 +1,17 @@
 .lista-asistentes-container
-  padding: 15
+  padding-top: 15
+  padding-bottom: 15
+  width: 100%
+  .asistente-item
+    margin-left: 15
+    img
+      height: 10vw
+      box-shadow: $shadow-nav
+      margin-bottom: 10px
+      border-radius: $radio
+    .nombreUsuario
+      text-align: center
+
   @media(max-width: $mobile-width)
     position: absolute
     padding: 0
@@ -16,5 +28,7 @@
       margin-left: 15
       img
         height: 10vw
+      .nombreUsuario
+        display: none
     h3
       display: none

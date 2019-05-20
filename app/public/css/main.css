@@ -24,7 +24,7 @@ body a {
     padding-top: 200px;
   }
   body h2 {
-    line-height: 50%;
+    line-height: 90%;
     margin-bottom: 30;
     text-align: left;
   }
@@ -196,6 +196,7 @@ nav.flex .user .nombreUsuario {
   .map-container {
     box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.3);
     border-radius: 0.3rem;
+    margin-bottom: 15;
   }
   .map-container #map {
     height: 450px;
@@ -215,19 +216,6 @@ nav.flex .user .nombreUsuario {
   padding: 15;
 }
 
-.floating-card.info-container .info-item {
-  margin-top: 15;
-}
-
-.floating-card.info-container .info-item h6 {
-  font-weight: bold;
-}
-
-.floating-card.info-container .info-item .data {
-  margin-left: 15;
-  line-height: 1.5;
-}
-
 @media (min-width: 768px) {
   .floating-card {
     box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.3);
@@ -238,7 +226,6 @@ nav.flex .user .nombreUsuario {
 }
 
 .btn.btn-block {
-  margin: auto -15;
   width: 100vw;
   border-radius: 0;
 }
@@ -255,7 +242,24 @@ nav.flex .user .nombreUsuario {
 }
 
 .lista-asistentes-container {
-  padding: 15;
+  padding-top: 15;
+  padding-bottom: 15;
+  width: 100%;
+}
+
+.lista-asistentes-container .asistente-item {
+  margin-left: 15;
+}
+
+.lista-asistentes-container .asistente-item img {
+  height: 10vw;
+  box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.3);
+  margin-bottom: 10px;
+  border-radius: 0.3rem;
+}
+
+.lista-asistentes-container .asistente-item .nombreUsuario {
+  text-align: center;
 }
 
 @media (max-width: 576px) {
@@ -278,8 +282,73 @@ nav.flex .user .nombreUsuario {
   .lista-asistentes-container .asistente-item img {
     height: 10vw;
   }
+  .lista-asistentes-container .asistente-item .nombreUsuario {
+    display: none;
+  }
   .lista-asistentes-container h3 {
     display: none;
+  }
+}
+
+.lista-quedadas-container {
+  width: 100vw;
+  padding: 0;
+}
+
+.lista-quedadas-container h3 {
+  text-align: center;
+}
+
+.lista-quedadas-container .lista-quedadas {
+  max-height: 30vh;
+  overflow-y: scroll;
+  padding: 0;
+}
+
+.lista-quedadas-container .lista-quedadas a {
+  font-size: 1.3rem;
+}
+
+.lista-quedadas-container .lista-quedadas a .check-asiste {
+  padding: 3px;
+  margin-right: 10;
+}
+
+@media (min-width: 768px) {
+  .lista-quedadas-container {
+    width: auto;
+  }
+  .lista-quedadas-container h3 {
+    text-align: left;
+  }
+}
+
+.info-container {
+  padding: 0;
+}
+
+.info-container .data-container {
+  padding-left: 15;
+  margin-bottom: 15;
+}
+
+.info-container .data-container .data-item {
+  margin-top: 15;
+}
+
+.info-container .data-container .data-item h6 {
+  font-weight: bold;
+}
+
+.info-container .data-container .data-item .data {
+  margin-left: 15;
+  margin-right: 15;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .info-container {
+    padding-left: 30;
   }
 }
 
