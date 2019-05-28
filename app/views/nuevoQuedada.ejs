@@ -1,7 +1,24 @@
 <% include head %>
-<% include nav %>
-<div class="container mt-3">
-<h1 class="d-flex justify-content-center">Nueva quedada</h1><br>
+<div class="container">
+<h2 class="">Nueva quedada</h2>
+<div class="panel-instrucciones">
+  <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#instrucciones"><i class="fas fa-info-circle"></i> Instrucciones</button>
+  <div id="instrucciones" class="collapse in">
+    <ul class="list-unstyled">
+      <li><strong>Pon nombre a la quedada</strong></li>
+        <ul>
+          <li>No podrás poner el nombre de una quedada existente, ni llamarlo "nuevo".</li>
+        </ul>
+      <li><strong>Elije el sitio donde se celebrará la quedada</strong></li>
+        <ul>
+          <li>Si no existe, puedes crear un sitio.</li>
+          <li>Si quieres puedes borrar un sitio, pero no puedes borrar sitios que pertenezcan a otra quedada.</li>
+        </ul>
+      <li><strong>Elije la fecha y la hora de la quedada</strong></li>
+      <li><strong>Para finalizar debes pulsar el botón de <i>Crear quedada</i></strong></li>
+    </ul>
+  </div>
+</div>
 
 <!-- <ul>
   <% for(var i=0; i<sitios.length; i++) { %>
@@ -15,23 +32,30 @@
   </ul> -->
 
 
-
+  <h4>Nombre de la quedada</h4>
   <div class="form-group row">
-    <label class="col-sm-2 col-form-label text-danger" id="texto" for="que">Nombre quedada: </label>
-      <div class="col-sm-9">
+      <div class="col-10">
         <input type="text" name ="que" class="form-control is-invalid" id="que" placeholder="Introduce el nombre de la nueva quedada..." onkeyup="validateForm()">
       </div>
-    <span id="icono" class="col-sm-1 fas fa-times fa-2x text-danger"></span>
-    </div>
+    <span id="icono" class="col-2 fas fa-times fa-2x text-danger"></span>
+  </div>
   <h4>Selecciona un sitio</h4>
-  <select name ="direccion"  id="direccion" onchange="validateForm();" class="custom-select" size="10">
-    <%if (sitios.length > 0) { %>
-      <option value="<%= sitios[0] %>" selected><%= sitios[0] %></option>
-      <% for(var i=1; i<sitios.length; i++) { %>
-            <option value="<%= sitios[i] %>"><%= sitios[i] %></option>
-      <% } %>
-    <% } %>
-  </select>
+  <div class="row">
+    <div class="col-7">
+      <select name ="direccion"  id="direccion" onchange="validateForm();" class="custom-select custom-select-md">
+        <%if (sitios.length > 0) { %>
+          <option value="<%= sitios[0] %>" selected><%= sitios[0] %></option>
+          <% for(var i=1; i<sitios.length; i++) { %>
+                <option value="<%= sitios[i] %>"><%= sitios[i] %></option>
+          <% } %>
+        <% } %>
+      </select>
+    </div>
+    <div class="col-5">
+      <a id="botonNuevoSitio" href="/sitio/nuevo" class="btn btn-light btn-md"><i class="far fa-plus-square"></i> Nuevo sitio</a>
+      <button id="botonEliminarSitio" type="submit" class="btn btn-primary btn-danger btn-md" onclick="borrarSitio()"><i class="far fa-trash-alt"></i> Borrar sitio</button>
+    </div>
+  </div>
 
   <!-- <form action="/sitio/nuevo">
       <input type="submit" value="Nuevo sitio" />
@@ -45,15 +69,10 @@
       </span>
     </div>
   </div> -->
-
-  <div class="d-flex justify-content-center">
-    <a id="botonNuevoSitio" href="/sitio/nuevo" class="btn btn-primary btn-sm btn-success ">Crear nuevo sitio</a> <br>
-    <button id="botonEliminarSitio" type="submit" class="btn btn-primary btn-danger btn-sm " onclick="borrarSitio()">Borrar sitio</button>
-  </div>
   <div style="overflow:hidden;">
+      <h4>Selecciona fecha y hora</h4>
       <div class="form-group">
-          <div class="row d-flex justify-content-center">
-
+          <div class="row">
               <div class="col-md-8">
                   <div data-target="#datetimepicker13" id="datetimepicker13"></div>
               </div>
@@ -61,26 +80,8 @@
       </div>
   </div>
   <br>
-  <button id="botonEnviar" class="btn btn-danger btn-lg" type="submit" onClick="return confirm('¿Añadir nueva quedada?') && enviarDatos() ;" disabled >Crear quedada</button>
-  <br>
-  <br>
-  <div>
-    <button type="button" class="btn btn-light" data-toggle="collapse" data-target="#instrucciones">Pulsa para obtener instrucciones.</button>
-    <div id="instrucciones" class="collapse in">
-      <ul class="list-unstyled">
-        <li>Pon nombre a la quedada.</li>
-          <ul>
-            <li>No podrás poner el nombre de una quedada existente, ni llamarlo "nuevo".</li>
-          </ul>
-        <li>Elije el sitio donde se celebrará la quedada.</li>
-          <ul>
-            <li>Si no existe, puedes crear un sitio.</li>
-            <li>Si quieres puedes borrar un sitio, pero no puedes borrar sitios que pertenezcan a otra quedada.</li>
-          </ul>
-        <li>Elije la fecha y la hora de la quedada.</li>
-        <li>Para finalizar debes pulsar el botón de <i>Crear quedada</i></li>
-      </ul>
-    </div>
+  <div class="row">
+    <button id="botonEnviar" class="btn btn-success btn-lg btn-block" type="submit" onClick="return confirm('¿Añadir nueva quedada?') && enviarDatos() ;" disabled >Crear quedada</button>
   </div>
 </div>
 <% include footer %>
@@ -182,29 +183,24 @@ function validateForm() {
   console.log("entro a validar nueva quedada");
   var x = document.getElementById("que").value;
   if (quedadas.includes(x) || x == "" || x.toLowerCase() == "nuevo" ) {
-    document.getElementById("texto").classList.remove('text-success');
     document.getElementById("icono").classList.remove('text-success');
     document.getElementById("que").classList.remove('is-valid');
     document.getElementById("icono").classList.remove('fa-check');
     document.getElementById('botonEnviar').classList.remove('btn-success');
 
 
-    document.getElementById("texto").classList.add('text-danger');
     document.getElementById("icono").classList.add('text-danger');
     document.getElementById("que").classList.add('is-invalid');
     document.getElementById("icono").classList.add('fa-times');
     document.getElementById('botonEnviar').classList.add('btn-danger');
-
     document.getElementById('botonEnviar').disabled = true;
     return false;
   } else {
-    document.getElementById("texto").classList.remove('text-danger');
     document.getElementById("icono").classList.remove('text-danger');
     document.getElementById("que").classList.remove('is-invalid');
     document.getElementById("icono").classList.remove('fa-times');
     document.getElementById('botonEnviar').classList.remove('btn-danger');
 
-    document.getElementById("texto").classList.add('text-success');
     document.getElementById("icono").classList.add('text-success');
     document.getElementById("que").classList.add('is-valid');
     document.getElementById("icono").classList.add('fa-check');
@@ -215,8 +211,5 @@ function validateForm() {
   }
   return false;
 }
-
-texto.addEventListener("keyup", function (event) {
-  validateForm();
-}, false);
 </script>
+<% include nav %>

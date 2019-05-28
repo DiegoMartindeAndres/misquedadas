@@ -1,5 +1,4 @@
 <% include head %>
-<% include nav%>
 <div class="container">
 
   <div class="row">
@@ -29,18 +28,20 @@
           </div>
         </div>
       </div>
-      <%if (asiste == false ) { %>
-        <form method="post" class= "mt-auto" action="/api/asiste/?que=<%= quedada.que %>&nombre=<%= user %>">
-          <button class="btn btn-primary btn-lg btn-block" type="submit"  onClick="return confirm('¿Confirmas asistir a la quedada <%= quedada.que %>?');" >Asistir</button>
+        <div class="mt-auto">
+        <%if (asiste == false ) { %>
+          <form method="post" class= "" action="/api/asiste/?que=<%= quedada.que %>&nombre=<%= user %>">
+            <button class="btn btn-success btn-md btn-block" type="submit"  onClick="return confirm('¿Confirmas asistir a la quedada <%= quedada.que %>?');" >Asistir</button>
+          </form>
+        <% } else{ %>
+          <form method="post" class= "" action="/api/asiste/?que=<%= quedada.que %>&nombre=<%= user %>">
+            <button type="submit" class="btn btn-danger btn-md btn-block" onClick="return confirm('¿Confirmas dejar de asistir a la quedada <%= quedada.que %>?');">No asistir</button>
+          </form>
+        <% } %>
+        <form method="post" action="/quedada/<%= quedada.que %>?_method=delete">
+          <button class="btn btn-danger btn-sm btn-block" type="submit"  onClick="return confirm('Se va a borrar: <%= quedada.que %>');">Borrar quedada</button>
         </form>
-      <% } else{ %>
-        <form method="post" class= "mt-auto" action="/api/asiste/?que=<%= quedada.que %>&nombre=<%= user %>">
-          <button type="submit" class="btn btn-primary btn-lg btn-block" onClick="return confirm('¿Confirmas dejar de asistir a la quedada <%= quedada.que %>?');">No asistir</button>
-        </form>
-      <% } %>
-      <form method="post" action="/quedada/<%= quedada.que %>?_method=delete">
-        <button class="btn btn-danger btn-sm btn-block" type="submit"  onClick="return confirm('Se va a borrar: <%= quedada.que %>');">Borrar quedada</button>
-      </form>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -48,7 +49,7 @@
       <h3>Asistentes</h3>
       <div class="d-flex flex-row flex-wrap">
         <% for(var i=0; i<asistentes.length; i++) { %>
-          <div class="asistente-item">
+          <div class="asistente-item" data-toggle="tooltip" data-placement="right" title='<%= asistentes[i] %>'>
             <a>
               <img  src="/img/<%= asistentes[i] %>.jpg" alt="<%= asistentes[i] %>" title="<%= asistentes[i] %>"><br>
               <div class="nombreUsuario">
@@ -59,27 +60,58 @@
 
         <% } %>
       </div>
+      <script type="text/javascript">
+        $(function () {
+          $('[data-toggle="tooltip"]').tooltip({
+            container:'body',
+            trigger: 'click',
+            animation: true
+          });
+        })
+      </script>
     </div>
   </div>
   <div class="row">
     <div class="col-md lista-quedadas-container">
-      <h3>Otras Quedadas</h3>
+      <h2>Otras Quedadas</h2>
         <ul class="list-group-flush lista-quedadas">
-          <% for(var i=0; i<quedadas.length; i++) { %>
+          <%for(var i=0; i<quedadas.length; i++) { %>
               <%if (quedadas[i] == quedada.que ) { %>
-                <a class='list-group-item list-group-item-action active d-flex' href='/quedada/<%= quedadas[i] %>'>
-                  <i class="fas fa-check-circle check-asiste"></i>
-                  <%= quedadas[i] %>
-                </a>
-                <% } else{ %>
-                  <a class='list-group-item list-group-item-action d-flex' href='/quedada/<%= quedadas[i] %>'>
-                    <i class="far fa-circle check-asiste"></i>
+                <%if (quedadasAsisto.includes(quedadas[i])) {%>
+                  <a class='list-group-item list-group-item-action active d-flex' href='/quedada/<%= quedadas[i] %>'>
+                    <form method="post" class= "mt-auto" action="/api/asiste/?que=<%= quedadas[i] %>&nombre=<%= user %>">
+                      <button class="fas fa-check-circle check-asiste" type="submit"  onClick="return confirm('¿Confirmas dejar de asistir a la quedada <%= quedadas[i] %>?');" ></button>
+                    </form>
+                    <%= quedadas[i] %>
+                  </a>
+                <% } else { %>
+                  <a class='list-group-item list-group-item-action active d-flex' href='/quedada/<%= quedadas[i] %>'>
+                    <form method="post" class= "mt-auto" action="/api/asiste/?que=<%= quedadas[i] %>&nombre=<%= user %>">
+                      <button class="far fa-circle check-asiste" type="submit"  onClick="return confirm('¿Confirmas asistir a la quedada <%= quedadas[i] %>?');" ></button>
+                    </form>
                     <%= quedadas[i] %>
                   </a>
                 <% } %>
+              <% } else{ %>
+                <%if (quedadasAsisto.includes(quedadas[i])) {%>
+                  <a class='list-group-item list-group-item-action d-flex' href='/quedada/<%= quedadas[i] %>'>
+                    <form method="post" class= "mt-auto" action="/api/asiste/?que=<%= quedadas[i] %>&nombre=<%= user %>">
+                      <button class="fas fa-check-circle check-asiste" type="submit"  onClick="return confirm('¿Confirmas dejar de asistir a la quedada <%= quedadas[i] %>?');" ></button>
+                    </form>
+                    <%= quedadas[i] %>
+                  </a>
+                <% } else { %>
+                  <a class='list-group-item list-group-item-action d-flex' href='/quedada/<%= quedadas[i] %>'>
+                    <form method="post" class= "mt-auto" action="/api/asiste/?que=<%= quedadas[i] %>&nombre=<%= user %>">
+                      <button class="far fa-circle check-asiste" type="submit"  onClick="return confirm('¿Confirmas asistir a la quedada <%= quedadas[i] %>?');" ></button>
+                    </form>
+                    <%= quedadas[i] %>
+                  </a>
+                <% } %>
+              <% } %>
           <% } %>
         </ul>
-        <a id="botonNuevaQuedada" href="/quedada/nuevo" class="btn btn-success btn-md btn-block">Nueva Quedada</a>
+        <a id="botonNuevaQuedada" href="/quedada/nuevo" class="btn btn-light btn-md btn-block"><i class="far fa-plus-square"></i> Nueva Quedada</a>
     </div>
 
   </div>
@@ -87,22 +119,23 @@
 <% include footer %>
 
 <script>
-function initMap() {
-  var location = {lat: <%= lat %>, lng: <%= lng %>};
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 19,
-    center: location,
-    gestureHandling: 'none',
-    streetViewControl: false,
-    zoomControl: true
-  });
-  var marker = new google.maps.Marker({
-    position: location,
-    map: map,
-    title: 'Quedada'
-  });
-};
+  function initMap() {
+    var location = {lat: <%= lat %>, lng: <%= lng %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 19,
+      center: location,
+      gestureHandling: 'none',
+      streetViewControl: false,
+      zoomControl: true
+    });
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map,
+      title: 'Quedada'
+    });
+  };
 </script>
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=<%- GoogleMapsAPIkey %>&callback=initMap">
 </script>
+<% include nav%>

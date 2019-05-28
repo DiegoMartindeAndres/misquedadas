@@ -24,14 +24,24 @@
       font-weight: bold
 
   .pac-card
-    margin: 10px 10px 0 0
-    border-radius: 2px 0 0 2px
-    box-sizing: border-box
-    -moz-box-sizing: border-box
-    outline: none
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3)
-    background-color: #fff
-    font-family: Roboto
+    //margin: 10px 10px 10px 10px
+    width: 95%
+    position: absolute
+    margin-top: 10px
+    left: 50%
+    transform: translateX(-50%)
+    //display: block
+    //box-sizing: border-box
+    //-moz-box-sizing: border-box
+    box-shadow: $shadow-nav
+    background-color: white
+
+    #title
+      color: white
+      background-color: $color-1
+      font-size: 25px
+      font-weight: 500
+      padding: 6px 12px
 
   #pac-container
     padding-bottom: 12px
@@ -58,23 +68,22 @@
     &:focus
       border-color: #4d90fe
 
-  #title
-    color: #fff
-    background-color: #4d90fe
-    font-size: 25px
-    font-weight: 500
-    padding: 6px 12px
 
   @media (min-width: $mobile-width)
     box-shadow: $shadow-nav
     border-radius: $radio
-    margin-bottom: 15
+    margin-bottom: 0
     #map
       height: 450px
       .gmnoprint
         display: block
       .gm-control-active
         display: block
+    .pac-card
+      margin: 10px
+      transform: none
+      left: auto
+      width: 50%
 
 
 /*FINAL - PARA EL MAPA*/

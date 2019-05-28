@@ -20,6 +20,7 @@ const executor      = require('app/executor');
 const showQuedadas = require('app/service/get-quedadas');
 const showQuedada = require('app/service/get-quedada');
 const showAsiste = require('app/service/get-asiste');
+const showAsistencia = require('app/service/get-asistencia');
 const showCoordenada = require('app/service/get-coordenadasQuedada.js');
 const removeQuedada = require('app/service/remove-quedada');
 const addQuedada = require('app/service/add-quedada');
@@ -67,8 +68,9 @@ module.exports = function (app,passport) {
 
   router.get('/',isLoggedIn, function (req, res) {
 
+    var usuario = req.session.passport.user;
     // Ejecutamos todas las promesas de búsquedas en la BBDD...
-    Promise.all([showQuedadas.execute()])
+    Promise.all([showQuedadas.execute(usuario)])
     .catch(
       function(err) {
         //console.log(err.message); // some coding error in handling happened
@@ -76,8 +78,8 @@ module.exports = function (app,passport) {
       })
       .then(values => {
 
-        if (values[0][0]){
-          var primeraQue = values[0][0];
+        if (values[0].quedadas[0]){
+          var primeraQue = values[0].quedadas[0];
           console.log("/////////////////////////////////////////////"+primeraQue);
           res.redirect(301,'/quedada/'+primeraQue);
         } else {
@@ -91,7 +93,7 @@ module.exports = function (app,passport) {
     router.get('/nuevo', isLoggedIn, function (req, res) {
       var usuario = req.session.passport.user;
       // Ejecutamos todas las promesas de búsquedas en la BBDD...
-      Promise.all([showSitios.execute(), showQuedadas.execute(),showSitiosBorrables.execute()])
+      Promise.all([showSitios.execute(), showQuedadas.execute(usuario),showSitiosBorrables.execute()])
       .catch(
         function(err) {
           //console.log(err.message); // some coding error in handling happened
@@ -99,7 +101,7 @@ module.exports = function (app,passport) {
         })
         .then(values => {
           var sitios = values[0];
-          var quedadas = values[1];
+          var quedadas = values[1].quedadas;
           var sitiosBorrables = values[2];
           //console.log(sitios); // some coding error in handling happened
           res.render('nuevoQuedada',{sitios:sitios,quedadas:quedadas,sitiosBorrables:sitiosBorrables,user:usuario});
@@ -139,14 +141,15 @@ module.exports = function (app,passport) {
         var params = {};
         params.que = req.params.QUE;
         // Ejecutamos todas las promesas de búsquedas en la BBDD...
-        Promise.all([showQuedadas.execute(), showQuedada.execute(params), showAsiste.execute(params),showCoordenada.execute(params) ])
+        Promise.all([showQuedadas.execute(), showQuedada.execute(params), showAsiste.execute(params),showCoordenada.execute(params),showAsistencia.execute(usuario) ])
         .catch(
           function(err) {
             //console.log(err.message); // some coding error in handling happened
             res.render('error',{message:err.messagge, error:err});
           })
           .then(values => {
-            var quedadas = values[0];
+            var quedadas = values[0].quedadas;
+            var quedadasAsisto = values[4];
             var datosQuedada = values[1];
             var asistentes = values[2];
             var arrayCoordenada = _.split(values[3][0].coordenadas, ',');
@@ -154,8 +157,9 @@ module.exports = function (app,passport) {
             var lng = _.trim(arrayCoordenada[1]);
 
             var asiste = asistentes.includes(usuario);
-            console.log('Datos quedada: ' + datosQuedada[0].que + ' ' + datosQuedada[0].dia + ' ' + datosQuedada[0].restante);
-            res.render('quedadas',{quedadas:quedadas, quedada:datosQuedada[0], asistentes:asistentes, lat:lat, lng:lng , user:usuario, asiste:asiste, GoogleMapsAPIkey:def.GoogleMapsAPIkey});
+            //console.log('Datos quedada: ' + datosQuedada[0].que + ' ' + datosQuedada[0].dia + ' ' + datosQuedada[0].restante);
+            //console.log("Quedadas a las que asiste " + usuario + ": " +quedadasAsisto);
+            res.render('quedadas',{quedadas:quedadas, quedadasAsisto: quedadasAsisto, quedada:datosQuedada[0], asistentes:asistentes, lat:lat, lng:lng , user:usuario, asiste:asiste, GoogleMapsAPIkey:def.GoogleMapsAPIkey});
           });
         });
 
@@ -173,13 +177,15 @@ module.exports = function (app,passport) {
         */
         router.post('/', isLoggedIn, function (req, res) {
 
+          var usuario = req.session.passport.user;
+
           var params = {};
           params.que = req.body.que;
           params.direccion = req.body.direccion;
           params.dia = req.body.dia;
           params.hora = req.body.hora;
 
-          Promise.all([showQuedadas.execute()])
+          Promise.all([showQuedadas.execute(usuario)])
           .catch(
             function(err) {
               //console.log(err); // some coding error in handling happened
@@ -187,7 +193,7 @@ module.exports = function (app,passport) {
               res.render('error',{message:mensaje, error:JSON.stringify(err)});
             })
             .then(values => {
-              var quedadas = values[0];
+              var quedadas = values[0].quedadas;
               if (quedadas.includes(params.que)){
                 var mensaje = "Estás tratando de añadir una quedada que ya existe. quedada.que="+params.que;
                 //console.log(mensaje);

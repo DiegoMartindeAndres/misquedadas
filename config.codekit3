@@ -33,22 +33,11 @@
 		"oO": 0,
 		"oS": 1
 		},
-	"/app/android-chrome-192x192.png": {
+	"/app/android-chrome-144x144.png": {
 		"ft": 32768,
-		"iS": 28103,
+		"iS": 11476,
 		"oA": 0,
-		"oAP": "/app/android-chrome-192x192.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"/app/android-chrome-512x512.png": {
-		"ft": 32768,
-		"iS": 89437,
-		"oA": 0,
-		"oAP": "/app/android-chrome-512x512.png",
+		"oAP": "/app/android-chrome-144x144.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
@@ -57,7 +46,7 @@
 		},
 	"/app/apple-touch-icon.png": {
 		"ft": 32768,
-		"iS": 25900,
+		"iS": 12082,
 		"oA": 0,
 		"oAP": "/app/apple-touch-icon.png",
 		"oF": 0,
@@ -145,7 +134,7 @@
 		},
 	"/app/favicon-16x16.png": {
 		"ft": 32768,
-		"iS": 689,
+		"iS": 1293,
 		"oA": 0,
 		"oAP": "/app/favicon-16x16.png",
 		"oF": 0,
@@ -156,7 +145,7 @@
 		},
 	"/app/favicon-32x32.png": {
 		"ft": 32768,
-		"iS": 1384,
+		"iS": 1830,
 		"oA": 0,
 		"oAP": "/app/favicon-32x32.png",
 		"oF": 0,
@@ -256,6 +245,19 @@
 		"oS": 1,
 		"uL": 1
 		},
+	"/app/public/css/_footer.sass": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 2,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/app/public/css/_footer.css",
+		"oF": 0,
+		"oS": 1,
+		"uL": 1
+		},
 	"/app/public/css/_info-container.sass": {
 		"aP": 0,
 		"bl": 0,
@@ -265,6 +267,32 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "/app/public/css/_info-container.css",
+		"oF": 0,
+		"oS": 1,
+		"uL": 1
+		},
+	"/app/public/css/_instrucciones.sass": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 2,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/app/public/css/_instrucciones.css",
+		"oF": 0,
+		"oS": 1,
+		"uL": 1
+		},
+	"/app/public/css/_login.sass": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 2,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/app/public/css/_login.css",
 		"oF": 0,
 		"oS": 1,
 		"uL": 1
@@ -291,6 +319,19 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "/app/public/css/_nav.css",
+		"oF": 0,
+		"oS": 1,
+		"uL": 1
+		},
+	"/app/public/css/_nuevaQuedada.sass": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 2,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "/app/public/css/_nuevaQuedada.css",
 		"oF": 0,
 		"oS": 1,
 		"uL": 1
@@ -422,6 +463,28 @@
 		"opt": 0,
 		"q": 100
 		},
+	"/app/public/img/login-background.jpg": {
+		"ft": 16384,
+		"iS": 1787033,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/app/public/img/login-background.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"q": 100
+		},
+	"/app/public/img/logo.png": {
+		"ft": 32768,
+		"iS": 13300,
+		"oA": 0,
+		"oAP": "/app/public/img/logo.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"/app/public/img/usuario.jpg": {
 		"ft": 16384,
 		"iS": 20401,
@@ -451,6 +514,17 @@
 		"mi": 0,
 		"oA": 1,
 		"oAP": "/app/public/js/moment-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/app/public/js/utilidades.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/app/public/js/utilidades-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -594,6 +668,17 @@
 		"mi": 0,
 		"oA": 1,
 		"oAP": "/app/service/get-asiste-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/app/service/get-asistencia.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "/app/service/get-asistencia-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0

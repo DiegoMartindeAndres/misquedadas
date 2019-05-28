@@ -7,85 +7,12 @@
 @import asistentes
 @import quedadas
 @import info-container
+@import login
+@import instrucciones
+@import nuevaQuedada
+@import footer
 
-footer
-  background-color: #fff
-  border-top: 1px solid #ededed
-  padding: 50px
-  z-index: 2
-  position: relative
-  color: #484848
-  text-align: center
-
-  .copyright
-      opacity: .5
-      line-height: 1.7
-/*PARA EL LOGIN*/
-body#LoginForm
-  background-image: url("https://hdwallsource.com/img/2014/9/blur-26347-27038-hd-wallpapers.jpg")
-  background-repeat: no-repeat; background-position:center
-  background-size: cover
-  padding: 10px
-
-.form-heading
-  color: #fff
-  font-size: 23px
-.panel
-  h2
-    color: #444444
-    font-size: 18px
-    margin: 0 0 8px 0
-  p
-    color: #777777
-    font-size: 14px
-    margin-bottom: 30px
-    line-height: 24px
-.login-form
-  text-align: center
-  .form-control
-    background: #f7f7f7 none repeat scroll 0 0
-    border: 1px solid #d4d4d4
-    border-radius: 4px
-    font-size: 14px
-    height: 50px
-    line-height: 50px
-  .form-group
-    margin-bottom: 10px
-  .btn.btn-primary
-    background: #f0ad4e none repeat scroll 0 0
-    border-color: #f0ad4e
-    color: #ffffff
-    font-size: 14px
-    width: 100%
-    height: 50px
-    line-height: 50px
-    padding: 0
-    &.reset
-      background: #ff9900 none repeat scroll 0 0
-.main-div
-  background: #ffffff none repeat scroll 0 0
-  border-radius: 2px
-  margin: 10px auto 30px
-  max-width: 38%
-  padding: 50px 70px 70px 71px
-
-.forgot
-  text-align: left; margin-bottom:30px
-  a
-    color: #777777
-    font-size: 14px
-    text-decoration: underline
-
-.botto-text
-  color: #ffffff
-  font-size: 14px
-  margin: auto
-.back
-  text-align: left
-  margin-top: 10px
-  a
-    color: #444444
-    font-size: 13px
-    text-decoration: none
-
-/*FIN EL LOGIN*/
+.nuevo-sitio-boton-enviar
+  @media(min-width: $mobile-width)
+    padding-left: 15
+    padding-right: 15
