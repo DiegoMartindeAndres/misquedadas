@@ -22,6 +22,11 @@ body a, body .btn.btn-link {
   color: #01acff;
 }
 
+body a:hover, body .btn.btn-link:hover {
+  text-decoration: none;
+  color: #01acff;
+}
+
 body h4 {
   margin-top: 30;
 }
@@ -65,7 +70,6 @@ nav.flex.scrolled .nav-icon a i {
 }
 
 nav.flex .nav-icon {
-  flex: 0 1 auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,14 +85,14 @@ nav.flex .nav-icon a {
 }
 
 nav.flex .nav-icon a .nav-tag {
-  height: 50px;
   text-align: center;
   font-size: 20;
+  padding-bottom: 4px;
   transition: all 0.3s ease-out;
 }
 
 nav.flex .nav-icon a i {
-  flex: 1 0 auto;
+  flex: 0 0 auto;
   font-size: 20;
   color: #01acff;
   margin: 0 5;
@@ -96,7 +100,7 @@ nav.flex .nav-icon a i {
 }
 
 nav.flex .user {
-  flex: 1 0 auto;
+  width: 60%;
   text-align: center;
 }
 
@@ -115,6 +119,9 @@ nav.flex .user .nombreUsuario {
 @media (min-width: 768px) {
   nav.flex {
     height: 200px;
+  }
+  nav.flex .user {
+    width: 530px;
   }
 }
 
@@ -138,6 +145,18 @@ nav.flex .user .nombreUsuario {
   nav.flex.scrolled .user .nombreUsuario {
     display: inline-block;
     margin-left: 10px;
+  }
+}
+
+@media (min-width: 992px) {
+  nav.flex .user {
+    width: 770px;
+  }
+}
+
+@media (min-width: 1200px) {
+  nav.flex .user {
+    width: 950px;
   }
 }
 
