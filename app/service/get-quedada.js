@@ -69,7 +69,7 @@ module.exports.execute = function (parametros) {
         if(moment().isBefore(fecha)){
           var restante = "Quedan " + fecha.fromNow(true) + " para este evento";
         } else{
-          var restante = "Este evento ya ha pasado...";
+          var restante = "Este evento ya ha acabado...";
         }
         objeto.dia = fecha.format('dddd DD MMMM YYYY').toUpperCase();
 
