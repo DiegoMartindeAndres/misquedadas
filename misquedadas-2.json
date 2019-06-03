@@ -7,7 +7,7 @@
     "port": 3306,
     "host": "localhost",
     "user": "root",
-    "password": "70p0$tre",
+    "password": "Clave de la BBDD",
     "database": "misquedadas2",
     "connectionLimit": 10
   },
@@ -25,5 +25,5 @@
     "separator": ".",
     "appender": "console"
   },
-  "GoogleMapsAPIkey" : "AIzaSyAwCoyEXCC0y2ABp2yCunfy7sr6wDeaDkw"
+  "GoogleMapsAPIkey" : "Clave de API Google Maps"
 }
