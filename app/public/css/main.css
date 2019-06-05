@@ -6,6 +6,10 @@ body {
   padding-top: 80px;
 }
 
+body.noscroll {
+  overflow: hidden;
+}
+
 body h2 {
   text-transform: uppercase;
   text-align: center;
@@ -33,7 +37,7 @@ body h4 {
 
 @media (min-width: 768px) {
   body {
-    padding-top: 200px;
+    padding-top: 220px;
   }
   body h2 {
     line-height: 90%;
@@ -46,6 +50,7 @@ nav.flex {
   display: flex;
   position: fixed;
   top: 0;
+  z-index: 3;
   flex-direction: row;
   justify-content: center;
   align-content: center;
@@ -82,12 +87,15 @@ nav.flex .nav-icon a {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin: auto 10px;
+  padding: 5px;
+  border-radius: 0.3rem;
 }
 
 nav.flex .nav-icon a .nav-tag {
   text-align: center;
   font-size: 20;
-  padding-bottom: 4px;
+  padding-bottom: 5px;
   transition: all 0.3s ease-out;
 }
 
@@ -97,6 +105,10 @@ nav.flex .nav-icon a i {
   color: #01acff;
   margin: 0 5;
   transition: all 0.3s ease-out;
+}
+
+nav.flex .nav-icon a i.rotated {
+  transform: rotate(90deg);
 }
 
 nav.flex .user {
@@ -121,7 +133,7 @@ nav.flex .user .nombreUsuario {
     height: 200px;
   }
   nav.flex .user {
-    width: 530px;
+    width: 400px;
   }
 }
 
@@ -150,14 +162,28 @@ nav.flex .user .nombreUsuario {
 
 @media (min-width: 992px) {
   nav.flex .user {
-    width: 770px;
+    width: 635px;
   }
 }
 
 @media (min-width: 1200px) {
   nav.flex .user {
-    width: 950px;
+    width: 820px;
   }
+}
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(100, 100, 100, 0.1);
+}
+
+.overlay.hidden {
+  display: none;
 }
 
 /*PARA EL MAPA*/
@@ -165,7 +191,7 @@ nav.flex .user .nombreUsuario {
  * element that contains the map. */
 .map-container {
   padding: 0;
-  margin-bottom: 10vw;
+  margin-bottom: 14vw;
 }
 
 .map-container #map {
@@ -251,8 +277,9 @@ nav.flex .user .nombreUsuario {
 @media (min-width: 576px) {
   .map-container {
     box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.3);
-    border-radius: 0.3rem;
     margin-bottom: 0;
+    border-radius: 0.3rem;
+    overflow: hidden;
   }
   .map-container #map {
     height: 450px;
@@ -352,11 +379,12 @@ nav.flex .user .nombreUsuario {
 @media (max-width: 576px) {
   .lista-asistentes-container {
     position: absolute;
-    padding: 0;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
     width: 100vw;
     overflow-x: scroll;
     top: calc(100vw + 80px);
-    transform: translateY(-50%);
+    background: linear-gradient(to bottom, #f1faff 0%, #ffffff 100%);
   }
   .lista-asistentes-container .asistente-item {
     border-radius: 100%;
@@ -434,6 +462,53 @@ nav.flex .user .nombreUsuario {
   }
   .lista-quedadas-container h3 {
     text-align: left;
+  }
+}
+
+.lista-quedadas-container.desplegable {
+  padding: 0;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  padding-top: 80px;
+  height: 0;
+  overflow: hidden;
+  background-color: white;
+  transition: all 0.3s ease-out;
+  border-radius: 0 0 0.3rem 0.3rem;
+}
+
+.lista-quedadas-container.desplegable .lista-quedadas {
+  max-height: 80vh;
+}
+
+.lista-quedadas-container.desplegable.scrolled {
+  padding-top: 60px;
+}
+
+.lista-quedadas-container.desplegable.displayed {
+  height: 100vh;
+}
+
+@media (min-width: 768px) {
+  .lista-quedadas-container.desplegable {
+    top: 200px;
+    padding: 0;
+    max-height: 60vh;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .lista-quedadas-container.desplegable .lista-quedadas {
+    max-height: auto;
+  }
+  .lista-quedadas-container.desplegable #botonNuevaQuedada {
+    margin: 0;
+  }
+  .lista-quedadas-container.desplegable.displayed {
+    opacity: 1;
   }
 }
 
@@ -586,7 +661,6 @@ footer {
   background-color: #fff;
   border-top: 1px solid #ededed;
   padding: 50px;
-  z-index: 2;
   position: relative;
   color: #484848;
   text-align: center;

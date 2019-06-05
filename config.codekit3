@@ -866,6 +866,14 @@
 		"oAP": "/app/views/head2.ejs",
 		"oF": 0
 		},
+	"/app/views/listaQuedadas.ejs": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/app/views/listaQuedadas.ejs",
+		"oF": 0
+		},
 	"/app/views/login.ejs": {
 		"cB": 0,
 		"ft": 8192,
@@ -2478,7 +2486,7 @@
 			}
 		},
 	"esLintSourceType": 0,
-	"externalServerAddress": "http://localhost:8080",
+	"externalServerAddress": "http://localhost:8081",
 	"gitIgnoreBuildFolder": 1,
 	"hideConfigFile": 0,
 	"jsCheckerReservedNamesString": "",

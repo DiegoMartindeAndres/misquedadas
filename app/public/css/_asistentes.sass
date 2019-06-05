@@ -14,17 +14,23 @@
 
   @media(max-width: $mobile-width)
     position: absolute
-    padding: 0
+    //padding-top: 15
+    //padding-bottom: 15
+    padding-top: 2vw
+    padding-bottom: 2vw
     width: 100vw
     overflow-x: scroll
+    //top: calc(100vw + 80px)
     top: calc(100vw + 80px)
-    transform: translateY(-50%)
+    //transform: translateY(-50%)
+    background: linear-gradient(to bottom, #f1faff 0%, #ffffff 100%)
     .asistente-item
       border-radius: 100%
       border-top: 3px solid $color-1
       border-left: 3px solid $color-1
       overflow: hidden
       margin-left: 15
+      //box-shadow: $shadow-nav
       img
         height: 10vw
         margin-bottom: 0

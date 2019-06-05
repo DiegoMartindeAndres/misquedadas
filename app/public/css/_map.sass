@@ -3,7 +3,7 @@
  * element that contains the map. */
 .map-container
   padding: 0
-  margin-bottom: 10vw //Separa de info de quedada y compensa tamaño de fotos asistentes
+  margin-bottom: 14vw //Separa de info de quedada y compensa tamaño de fotos asistentes
   #map
     height: 100vw
     #infowindow-content
@@ -71,8 +71,9 @@
 
   @media (min-width: $mobile-width)
     box-shadow: $shadow-nav
-    border-radius: $radio
     margin-bottom: 0
+    border-radius: $radio
+    overflow: hidden
     #map
       height: 450px
       .gmnoprint

@@ -72,51 +72,12 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md lista-quedadas-container">
-      <h2>Otras Quedadas</h2>
-        <ul class="list-group-flush lista-quedadas">
-          <%for(var i=0; i<quedadas.length; i++) { %>
-              <%if (quedadas[i] == quedada.que ) { %>
-                <%if (quedadasAsisto.includes(quedadas[i])) {%>
-                  <a class='list-group-item list-group-item-action active d-flex' href='/quedada/<%= quedadas[i] %>'>
-                    <form method="post" class= "mt-auto" action="/api/asiste/?que=<%= quedadas[i] %>&nombre=<%= user %>">
-                      <button class="fas fa-check-circle check-asiste" type="submit"  onClick="return confirm('¿Confirmas dejar de asistir a la quedada <%= quedadas[i] %>?');" ></button>
-                    </form>
-                    <%= quedadas[i] %>
-                  </a>
-                <% } else { %>
-                  <a class='list-group-item list-group-item-action active d-flex' href='/quedada/<%= quedadas[i] %>'>
-                    <form method="post" class= "mt-auto" action="/api/asiste/?que=<%= quedadas[i] %>&nombre=<%= user %>">
-                      <button class="far fa-circle check-asiste" type="submit"  onClick="return confirm('¿Confirmas asistir a la quedada <%= quedadas[i] %>?');" ></button>
-                    </form>
-                    <%= quedadas[i] %>
-                  </a>
-                <% } %>
-              <% } else{ %>
-                <%if (quedadasAsisto.includes(quedadas[i])) {%>
-                  <a class='list-group-item list-group-item-action d-flex' href='/quedada/<%= quedadas[i] %>'>
-                    <form method="post" class= "mt-auto" action="/api/asiste/?que=<%= quedadas[i] %>&nombre=<%= user %>">
-                      <button class="fas fa-check-circle check-asiste" type="submit"  onClick="return confirm('¿Confirmas dejar de asistir a la quedada <%= quedadas[i] %>?');" ></button>
-                    </form>
-                    <%= quedadas[i] %>
-                  </a>
-                <% } else { %>
-                  <a class='list-group-item list-group-item-action d-flex' href='/quedada/<%= quedadas[i] %>'>
-                    <form method="post" class= "mt-auto" action="/api/asiste/?que=<%= quedadas[i] %>&nombre=<%= user %>">
-                      <button class="far fa-circle check-asiste" type="submit"  onClick="return confirm('¿Confirmas asistir a la quedada <%= quedadas[i] %>?');" ></button>
-                    </form>
-                    <%= quedadas[i] %>
-                  </a>
-                <% } %>
-              <% } %>
-          <% } %>
-        </ul>
-        <a id="botonNuevaQuedada" href="/quedada/nuevo" class="btn btn-light btn-md btn-block"><i class="far fa-plus-square"></i> Nueva Quedada</a>
-    </div>
+    <% include listaQuedadas %>
 
   </div>
 </div>
 <% include footer %>
+<% include nav%>
 
 <script>
   function initMap() {
@@ -138,4 +99,3 @@
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=<%- GoogleMapsAPIkey %>&callback=initMap">
 </script>
-<% include nav%>

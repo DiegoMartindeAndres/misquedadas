@@ -89,11 +89,10 @@ module.exports = function (app,passport) {
 
     });
 
-
     router.get('/nuevo', isLoggedIn, function (req, res) {
       var usuario = req.session.passport.user;
       // Ejecutamos todas las promesas de búsquedas en la BBDD...
-      Promise.all([showSitios.execute(), showQuedadas.execute(usuario),showSitiosBorrables.execute()])
+      Promise.all([showSitios.execute(), showQuedadas.execute(usuario),showSitiosBorrables.execute(), showAsistencia.execute(usuario)])
       .catch(
         function(err) {
           //console.log(err.message); // some coding error in handling happened
@@ -103,8 +102,9 @@ module.exports = function (app,passport) {
           var sitios = values[0];
           var quedadas = values[1].quedadas;
           var sitiosBorrables = values[2];
+          var quedadasAsisto = values[3];
           //console.log(sitios); // some coding error in handling happened
-          res.render('nuevoQuedada',{sitios:sitios,quedadas:quedadas,sitiosBorrables:sitiosBorrables,user:usuario});
+          res.render('nuevoQuedada',{sitios:sitios,quedadas:quedadas,sitiosBorrables:sitiosBorrables,user:usuario, quedadasAsisto: quedadasAsisto, quedada: "No hay quedada seleccionada"});
         });
       });
 

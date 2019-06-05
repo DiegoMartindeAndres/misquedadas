@@ -57,7 +57,9 @@
     <span id="place-address"></span>
   </div>
 </div>
+<% include listaQuedadas %>
 <% include footer %>
+<% include nav %>
 <script>
 var sitios = <%- JSON.stringify(sitios) %>;
 var texto = document.getElementById('direccion');
@@ -192,4 +194,3 @@ function initMap() {
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=<%- GoogleMapsAPIkey %>&libraries=places&callback=initMap">
 </script>
-<% include nav %>

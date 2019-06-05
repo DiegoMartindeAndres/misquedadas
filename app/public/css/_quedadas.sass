@@ -33,3 +33,38 @@
     width: auto
     h3
       text-align: left
+//Estilos para desplegable desde nav
+.lista-quedadas-container.desplegable
+  padding: 0
+  position: fixed
+  z-index: 2
+  top: 0
+  left: 0
+  padding-top: $nav-height
+  height: 0
+  overflow: hidden
+  background-color: white
+  transition: all $transition-duration $transition-funtion
+  border-radius: 0 0 $radio $radio
+  .lista-quedadas
+    max-height: 80vh
+  &.scrolled
+    padding-top: $nav-height-scrolled
+  &.displayed
+    height: 100vh
+  @media (min-width: $mobile-width-md)
+    top: $nav-height-desktop
+    padding: 0
+    max-height: 60vh
+    opacity: 0
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    .lista-quedadas
+      max-height: auto
+      //border-bottom: 2px solid $color-4
+    #botonNuevaQuedada
+      margin: 0
+    &.displayed
+      opacity: 1
+      //box-shadow: $shadow-nav

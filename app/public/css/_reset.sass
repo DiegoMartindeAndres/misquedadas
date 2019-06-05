@@ -4,6 +4,8 @@ body
   font: 15px "Source Sans Pro", Helvetica, Arial, sans-serif
   color: $color-texto-base
   padding-top: $nav-height
+  &.noscroll
+    overflow: hidden
   h2
     text-transform: uppercase
     text-align: center
@@ -20,7 +22,7 @@ body
   h4
     margin-top: 30
   @media(min-width: $mobile-width-md)
-    padding-top: $nav-height-desktop
+    padding-top: ($nav-height-desktop + 20px)
     h2
       line-height: 90%
       margin-bottom: 30
