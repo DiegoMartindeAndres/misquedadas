@@ -11,8 +11,8 @@
           </ul>
         <li><strong>Busca en el mapa la localización del sitio</strong></li>
           <ul>
-            <li>Usa el cuadro azul para buscar en el mapa.</li>
-            <li>También puedes desplazar el icono <i class="fas fa-map-marker-alt text-danger"></i> donde quieras establecer tu sitio.</li>
+            <li>Pulsa el cuadro con el símbolo <i class="fas fa-search"></i> y escribe el nombre de un lugar.</li>
+            <li>También puedes desplazar el icono <i class="fas fa-map-marker-alt text-primary"></i> donde quieras establecer tu sitio.</li>
           </ul>
         <li><strong>Para finalizar debes pulsar el botón de <i>Crear sitio</i></strong></li>
       </ul>
@@ -39,7 +39,7 @@
       <button id="botonEnviar" class="btn btn-success btn-block btn-lg" type="submit" disabled="disabled" onClick="return confirm('¿Añadir nuevo sitio?');">Crear sitio</button>
     </div>
 </form>
-
+  <!-- Elementos para GoogleMaps
   <div class="pac-card" id="pac-card">
     <div id="title">
       Búsqueda
@@ -56,6 +56,7 @@
     <span id="place-name"  class="title"></span><br>
     <span id="place-address"></span>
   </div>
+-->
 </div>
 <% include listaQuedadas %>
 <% include footer %>
@@ -104,6 +105,44 @@ validateForm();
 
 </script>
 
+<script type="text/javascript">
+  var initLocation = [40.452658, -3.726201];
+  var mymap = L.map('map').setView(initLocation, 20);
+  <%if (HereMapsAppID !== "" && HereMapsAppCode !== "" && UseOpenStreetMaps !== true) { %>
+    L.tileLayer("https://2.base.maps.api.here.com/maptile/2.1/maptile/newest/normal.day.transit/{z}/{x}/{y}/512/png8?app_id=" + "ZufL8LUCsn4530iRov3l" + "&app_code=" + "PD0XFT1gq8aU1O0s9JmSlA" + "&ppi=320", {}).addTo(mymap);
+  <% } else { %>
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {foo: 'bar', attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'}).addTo(mymap);
+  <% } %>
+
+  var marker = L.marker(initLocation, {
+    draggable: true,
+    autoPan: true
+  }).addTo(mymap);
+  marker.on('dragend', function(ev){
+    var lat = marker.getLatLng().lat;
+    var lng = marker.getLatLng().lng;
+    $('#lat').val(lat);
+    $('#lng').val(lng);
+  });
+
+  var geocoder = L.Control.geocoder({
+    placeholder: "Búsqueda...",
+    errorMessage: "No se han encontrado resultados",
+    defaultMarkGeocode: false
+  }).addTo(mymap);
+
+  geocoder.on('markgeocode',function(ev){
+    console.log(ev);
+    mymap.setView(ev.geocode.center);
+    marker.setLatLng(ev.geocode.center);
+    var lat = ev.geocode.center.lat;
+    var lng = ev.geocode.center.lng;
+    $('#lat').val(lat);
+    $('#lng').val(lng);
+  })
+</script>
+
+<!-- Script de inicializacion de GoogleMaps
 <script>
 function initMap() {
   var location = {lat: 40.452658, lng: -3.726201};
@@ -194,3 +233,4 @@ function initMap() {
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=<%- GoogleMapsAPIkey %>&libraries=places&callback=initMap">
 </script>
+-->

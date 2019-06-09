@@ -3,14 +3,17 @@
  * element that contains the map. */
 .map-container
   padding: 0
-  margin-bottom: 14vw //Separa de info de quedada y compensa tamaño de fotos asistentes
+  margin-bottom: 17vw //Separa de info de quedada y compensa tamaño de fotos asistentes
   #map
     height: 100vw
+    z-index: 0!important
     #infowindow-content
       display: inline
     .gmnoprint
       display: none
     .gm-control-active
+      display: none
+    .leaflet-control-container .leaflet-left, .leaflet-bottom
       display: none
 
   #description
@@ -68,7 +71,6 @@
     &:focus
       border-color: #4d90fe
 
-
   @media (min-width: $mobile-width)
     box-shadow: $shadow-nav
     margin-bottom: 0
@@ -80,6 +82,8 @@
         display: block
       .gm-control-active
         display: block
+      .leaflet-control-container .leaflet-left, .leaflet-bottom
+        display: initial
     .pac-card
       margin: 10px
       transform: none

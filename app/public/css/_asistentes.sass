@@ -11,6 +11,9 @@
       margin-bottom: 10px
     .nombreUsuario
       text-align: center
+  h3
+    &.no-asistentes
+      opacity: 0.4
 
   @media(max-width: $mobile-width)
     position: absolute
@@ -38,3 +41,8 @@
         display: none
     h3
       display: none
+      &.no-asistentes
+        display: block
+        padding-left: 15
+        padding-right: 15
+        font-size: 15pt

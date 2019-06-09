@@ -46,7 +46,11 @@
   </div>
   <div class="row">
     <div class="lista-asistentes-container">
-      <h3>Asistentes</h3>
+      <%if (asistentes.length > 0) {%>
+        <h3>Asistentes</h3>
+      <% } else {%>
+        <h3 class="no-asistentes">Nadie ha confirmado aún asistencia...</h3>
+      <% } %>
       <div class="d-flex flex-row flex-wrap">
         <% for(var i=0; i<asistentes.length; i++) { %>
           <div class="asistente-item" data-toggle="tooltip" data-placement="right" title='<%= asistentes[i] %>'>
@@ -78,7 +82,18 @@
 </div>
 <% include footer %>
 <% include nav%>
+<script type="text/javascript">
+  var mymap = L.map('map').setView([<%= lat %>, <%= lng %>], 20);
 
+  <%if (HereMapsAppID !== "" && HereMapsAppCode !== "" && UseOpenStreetMaps !== true) { %>
+    L.tileLayer("https://2.base.maps.api.here.com/maptile/2.1/maptile/newest/normal.day.transit/{z}/{x}/{y}/512/png8?app_id=" + "ZufL8LUCsn4530iRov3l" + "&app_code=" + "PD0XFT1gq8aU1O0s9JmSlA" + "&ppi=320", {}).addTo(mymap);
+  <% } else { %>
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {foo: 'bar', attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'}).addTo(mymap);
+  <% } %>
+
+  var marker = L.marker([<%= lat %>, <%= lng %>]).addTo(mymap);
+</script>
+<!-- Script de inicializacion de Google Maps
 <script>
   function initMap() {
     var location = {lat: <%= lat %>, lng: <%= lng %>};
@@ -99,3 +114,4 @@
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=<%- GoogleMapsAPIkey %>&callback=initMap">
 </script>
+-->

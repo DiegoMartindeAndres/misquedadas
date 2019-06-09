@@ -132,7 +132,7 @@ module.exports = function (app,passport) {
               var quedadas = values[1].quedadas;
               var quedadasAsisto = values[2];
               //console.log(sitios); // some coding error in handling happened
-              res.render('nuevoSitio',{sitios:sitios,user:usuario, GoogleMapsAPIkey:def.GoogleMapsAPIkey, quedadas: quedadas, quedadasAsisto: quedadasAsisto, quedada: "No hay quedada seleccionada"});
+              res.render('nuevoSitio',{sitios:sitios,user:usuario, GoogleMapsAPIkey:def.GoogleMapsAPIkey, quedadas: quedadas, quedadasAsisto: quedadasAsisto, quedada: "No hay quedada seleccionada", HereMapsAppID: def.HereMapsAppID, HereMapsAppCode: def. HereMapsAppCode, UseOpenStreetMaps: def.UseOpenStreetMaps});
             });
           });
 

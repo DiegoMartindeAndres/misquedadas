@@ -47,4 +47,5 @@ $(document).ready(function(){
   $('.overlay').on('click',function(){
     $('.otras-quedadas-toggle').click();
   })
+
 })

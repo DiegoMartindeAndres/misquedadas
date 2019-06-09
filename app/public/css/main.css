@@ -14,7 +14,6 @@ body h2 {
   text-transform: uppercase;
   text-align: center;
   font-size: 50px;
-  padding-left: 15;
   padding-right: 15;
 }
 
@@ -131,6 +130,7 @@ nav.flex .user .nombreUsuario {
 @media (min-width: 768px) {
   nav.flex {
     height: 200px;
+    position: absolute;
   }
   nav.flex .user {
     width: 400px;
@@ -191,11 +191,12 @@ nav.flex .user .nombreUsuario {
  * element that contains the map. */
 .map-container {
   padding: 0;
-  margin-bottom: 14vw;
+  margin-bottom: 17vw;
 }
 
 .map-container #map {
   height: 100vw;
+  z-index: 0 !important;
 }
 
 .map-container #map #infowindow-content {
@@ -207,6 +208,10 @@ nav.flex .user .nombreUsuario {
 }
 
 .map-container #map .gm-control-active {
+  display: none;
+}
+
+.map-container #map .leaflet-control-container .leaflet-left, .map-container #map .leaflet-bottom {
   display: none;
 }
 
@@ -289,6 +294,9 @@ nav.flex .user .nombreUsuario {
   }
   .map-container #map .gm-control-active {
     display: block;
+  }
+  .map-container #map .leaflet-control-container .leaflet-left, .map-container #map .leaflet-bottom {
+    display: initial;
   }
   .map-container .pac-card {
     margin: 10px;
@@ -376,6 +384,10 @@ nav.flex .user .nombreUsuario {
   text-align: center;
 }
 
+.lista-asistentes-container h3.no-asistentes {
+  opacity: 0.4;
+}
+
 @media (max-width: 576px) {
   .lista-asistentes-container {
     position: absolute;
@@ -403,9 +415,16 @@ nav.flex .user .nombreUsuario {
   .lista-asistentes-container h3 {
     display: none;
   }
+  .lista-asistentes-container h3.no-asistentes {
+    display: block;
+    padding-left: 15;
+    padding-right: 15;
+    font-size: 15pt;
+  }
 }
 
 .lista-quedadas-container {
+  z-index: 4;
   width: 100vw;
   padding: 0;
   padding-top: 60;
@@ -418,6 +437,7 @@ nav.flex .user .nombreUsuario {
 
 .lista-quedadas-container .lista-quedadas {
   max-height: 30vh;
+  z-index: 4;
   overflow-y: scroll;
   padding: 0;
   margin-bottom: 0;

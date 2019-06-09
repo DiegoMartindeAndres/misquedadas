@@ -159,7 +159,7 @@ module.exports = function (app,passport) {
             var asiste = asistentes.includes(usuario);
             //console.log('Datos quedada: ' + datosQuedada[0].que + ' ' + datosQuedada[0].dia + ' ' + datosQuedada[0].restante);
             //console.log("Quedadas a las que asiste " + usuario + ": " +quedadasAsisto);
-            res.render('quedadas',{quedadas:quedadas, quedadasAsisto: quedadasAsisto, quedada:datosQuedada[0], asistentes:asistentes, lat:lat, lng:lng , user:usuario, asiste:asiste, GoogleMapsAPIkey:def.GoogleMapsAPIkey});
+            res.render('quedadas',{quedadas:quedadas, quedadasAsisto: quedadasAsisto, quedada:datosQuedada[0], asistentes:asistentes, lat:lat, lng:lng , user:usuario, asiste:asiste, GoogleMapsAPIkey:def.GoogleMapsAPIkey, HereMapsAppID: def.HereMapsAppID, HereMapsAppCode: def. HereMapsAppCode, UseOpenStreetMaps: def.UseOpenStreetMaps});
           });
         });
 
