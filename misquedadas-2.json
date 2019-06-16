@@ -7,8 +7,8 @@
     "port": 3306,
     "host": "localhost",
     "user": "root",
-    "password": "",
-    "database": "misquedadas",
+    "password": "70p0$tre",
+    "database": "misquedadas2",
     "connectionLimit": 10
   },
   "logger": {
