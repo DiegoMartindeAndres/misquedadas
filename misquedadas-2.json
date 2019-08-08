@@ -7,7 +7,7 @@
     "port": 3306,
     "host": "localhost",
     "user": "root",
-    "password": "Clave de la BBDD",
+    "password": "Clave de la base de datos",
     "database": "misquedadas",
     "connectionLimit": 10
   },
@@ -25,5 +25,8 @@
     "separator": ".",
     "appender": "console"
   },
-  "GoogleMapsAPIkey" : "Clave de API Google Maps"
+  "GoogleMapsAPIkey" : "Clave de API Google Maps",
+  "HereMapsAppID" : "App ID de Here Maps",
+  "HereMapsAppCode" : "App Code de Here Maps",
+  "UseOpenStreetMaps": true
 }

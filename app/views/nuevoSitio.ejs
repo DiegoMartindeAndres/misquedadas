@@ -1,48 +1,46 @@
 <% include head %>
 <div class="container mt-3">
-  <% include user %>
-<h1 class="d-flex justify-content-center">Nuevo sitio</h1><br>
-
-<form name="nuevoSitioForm" method="post" onsubmit="return validateForm()" action="/sitio/">
-
-    <input type="hidden" name="lat" id="lat" value="40.452658">
-    <input type="hidden" name="lng" id="lng" value="-3.726201">
-    <div class="form-group row">
-
-
-      <label class="col-sm-2 col-form-label text-danger" id="texto" for="direccion">Nombre sitio: </label>
-        <div class="col-sm-9">
-          <input type="text" name ="direccion" class="form-control is-invalid" id="direccion" placeholder="Introduce el nombre del nuevo sitio...">
-        </div>
-      <span id="icono" class="col-sm-1 fas fa-times fa-2x text-danger"></span>
-      </div>
-
-  <div id="map"></div>
-  <br>
-  <button id="botonEnviar" class="btn btn-danger btn-lg" type="submit" disabled="disabled" onClick="return confirm('¿Añadir nuevo sitio?');">Crear sitio</button>
-  <br>
-  <br>
-  <div>
-    <button type="button" class="btn btn-light" data-toggle="collapse" data-target="#instrucciones">Pulsa para obtener instrucciones.</button>
+  <h2 class="">Nuevo sitio</h2><br>
+  <div class="panel-instrucciones">
+    <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#instrucciones"><i class="fas fa-info-circle"></i> Instrucciones.</button>
     <div id="instrucciones" class="collapse in">
       <ul class="list-unstyled">
-        <li>Pon nombre al sitio.</li>
+        <li><strong>Pon nombre al sitio</strong></li>
           <ul>
             <li>No podrás ponerle el nombre de un sitio existente, ni llamarlo "nuevo"</li>
           </ul>
-        <li>Busca en el mapa la localización del sitio.</li>
+        <li><strong>Busca en el mapa la localización del sitio</strong></li>
           <ul>
-            <li>Usa el cuadro azul para buscar en el mapa.</li>
-            <li>También puedes desplazar el icono <i class="fas fa-map-marker-alt text-danger"></i> donde quieras establecer tu sitio.</li>
+            <li>Pulsa el cuadro con el símbolo <i class="fas fa-search"></i> y escribe el nombre de un lugar.</li>
+            <li>También puedes desplazar el icono <i class="fas fa-map-marker-alt text-primary"></i> donde quieras establecer tu sitio.</li>
           </ul>
-        <li>Para finalizar debes pulsar el botón de <i>Crear sitio</i></li>
+        <li><strong>Para finalizar debes pulsar el botón de <i>Crear sitio</i></strong></li>
       </ul>
     </div>
   </div>
+
+  <form name="nuevoSitioForm" method="post" onsubmit="return validateForm()" action="/sitio/">
+
+    <input type="hidden" name="lat" id="lat" value="40.452658">
+    <input type="hidden" name="lng" id="lng" value="-3.726201">
+    <h4>Elige un nombre para el sitio</h4>
+    <div class="form-group row">
+        <div class="col-9">
+          <input type="text" name ="direccion" class="form-control is-invalid" id="direccion" placeholder="Introduce el nombre del nuevo sitio...">
+        </div>
+      <span id="icono" class="col-1 fas fa-times fa-2x text-danger"></span>
+    </div>
+  <h4>Selecciona una ubicación</h4>
+    <div class="map-container">
+      <div id="map"></div>
+    </div>
+    <br>
+    <div class="row nuevo-sitio-boton-enviar">
+      <button id="botonEnviar" class="btn btn-success btn-block btn-lg" type="submit" disabled="disabled" onClick="return confirm('¿Añadir nuevo sitio?');">Crear sitio</button>
+    </div>
 </form>
-
-<div class="pac-card" id="pac-card">
-
+  <!-- Elementos para GoogleMaps
+  <div class="pac-card" id="pac-card">
     <div id="title">
       Búsqueda
     </div>
@@ -58,8 +56,11 @@
     <span id="place-name"  class="title"></span><br>
     <span id="place-address"></span>
   </div>
+-->
 </div>
+<% include listaQuedadas %>
 <% include footer %>
+<% include nav %>
 <script>
 var sitios = <%- JSON.stringify(sitios) %>;
 var texto = document.getElementById('direccion');
@@ -69,13 +70,11 @@ function validateForm() {
   //console.log("entro a validar nuevo sitios");
   var x = document.forms["nuevoSitioForm"]["direccion"].value;
   if (sitios.includes(x) || x == "" || x.toLowerCase() == "nuevo" ) {
-    document.getElementById("texto").classList.remove('text-success');
     document.getElementById("icono").classList.remove('text-success');
     document.getElementById("direccion").classList.remove('is-valid');
     document.getElementById("icono").classList.remove('fa-check');
     document.getElementById('botonEnviar').classList.remove('btn-success');
 
-    document.getElementById("texto").classList.add('text-danger');
     document.getElementById("icono").classList.add('text-danger');
     document.getElementById("direccion").classList.add('is-invalid');
     document.getElementById("icono").classList.add('fa-times');
@@ -84,13 +83,11 @@ function validateForm() {
     document.getElementById('botonEnviar').disabled = true;
     return false;
   } else {
-    document.getElementById("texto").classList.remove('text-danger');
     document.getElementById("icono").classList.remove('text-danger');
     document.getElementById("direccion").classList.remove('is-invalid');
     document.getElementById("icono").classList.remove('fa-times');
     document.getElementById('botonEnviar').classList.remove('btn-danger');
 
-    document.getElementById("texto").classList.add('text-success');
     document.getElementById("icono").classList.add('text-success');
     document.getElementById("direccion").classList.add('is-valid');
     document.getElementById("icono").classList.add('fa-check');
@@ -108,6 +105,44 @@ validateForm();
 
 </script>
 
+<script type="text/javascript">
+  var initLocation = [40.452658, -3.726201];
+  var mymap = L.map('map').setView(initLocation, 20);
+  <%if (HereMapsAppID !== "" && HereMapsAppCode !== "" && UseOpenStreetMaps !== true) { %>
+    L.tileLayer("https://2.base.maps.api.here.com/maptile/2.1/maptile/newest/normal.day.transit/{z}/{x}/{y}/512/png8?app_id=" + "ZufL8LUCsn4530iRov3l" + "&app_code=" + "PD0XFT1gq8aU1O0s9JmSlA" + "&ppi=320", {}).addTo(mymap);
+  <% } else { %>
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {foo: 'bar', attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'}).addTo(mymap);
+  <% } %>
+
+  var marker = L.marker(initLocation, {
+    draggable: true,
+    autoPan: true
+  }).addTo(mymap);
+  marker.on('dragend', function(ev){
+    var lat = marker.getLatLng().lat;
+    var lng = marker.getLatLng().lng;
+    $('#lat').val(lat);
+    $('#lng').val(lng);
+  });
+
+  var geocoder = L.Control.geocoder({
+    placeholder: "Búsqueda...",
+    errorMessage: "No se han encontrado resultados",
+    defaultMarkGeocode: false
+  }).addTo(mymap);
+
+  geocoder.on('markgeocode',function(ev){
+    console.log(ev);
+    mymap.setView(ev.geocode.center);
+    marker.setLatLng(ev.geocode.center);
+    var lat = ev.geocode.center.lat;
+    var lng = ev.geocode.center.lng;
+    $('#lat').val(lat);
+    $('#lng').val(lng);
+  })
+</script>
+
+<!-- Script de inicializacion de GoogleMaps
 <script>
 function initMap() {
   var location = {lat: 40.452658, lng: -3.726201};
@@ -198,3 +233,4 @@ function initMap() {
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=<%- GoogleMapsAPIkey %>&libraries=places&callback=initMap">
 </script>
+-->

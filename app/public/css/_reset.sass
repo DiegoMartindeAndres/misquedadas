@@ -1,0 +1,29 @@
+body
+  padding: 0
+  margin: 0
+  font: 15px "Source Sans Pro", Helvetica, Arial, sans-serif
+  color: $color-texto-base
+  padding-top: $nav-height
+  &.noscroll
+    overflow: hidden
+  h2
+    text-transform: uppercase
+    text-align: center
+    font-size: 50px
+    //padding-left: 15
+    padding-right: 15
+  h3
+    text-transform: uppercase
+  a, .btn.btn-link
+    color: $color-1
+    &:hover
+      text-decoration: none
+      color: $color-1
+  h4
+    margin-top: 30
+  @media(min-width: $mobile-width-md)
+    padding-top: ($nav-height-desktop + 20px)
+    h2
+      line-height: 90%
+      margin-bottom: 30
+      text-align: left

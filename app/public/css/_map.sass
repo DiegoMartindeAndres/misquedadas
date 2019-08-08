@@ -1,0 +1,94 @@
+/*PARA EL MAPA*/
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+.map-container
+  padding: 0
+  margin-bottom: 17vw //Separa de info de quedada y compensa tamaño de fotos asistentes
+  #map
+    height: 100vw
+    z-index: 0!important
+    #infowindow-content
+      display: inline
+    .gmnoprint
+      display: none
+    .gm-control-active
+      display: none
+    .leaflet-control-container .leaflet-left, .leaflet-bottom
+      display: none
+
+  #description
+    font-family: Roboto
+    font-size: 15px
+    font-weight: 300
+
+  #infowindow-content
+    display: none
+    .title
+      font-weight: bold
+
+  .pac-card
+    //margin: 10px 10px 10px 10px
+    width: 95%
+    position: absolute
+    margin-top: 10px
+    left: 50%
+    transform: translateX(-50%)
+    //display: block
+    //box-sizing: border-box
+    //-moz-box-sizing: border-box
+    box-shadow: $shadow-nav
+    background-color: white
+
+    #title
+      color: white
+      background-color: $color-1
+      font-size: 25px
+      font-weight: 500
+      padding: 6px 12px
+
+  #pac-container
+    padding-bottom: 12px
+    margin-right: 12px
+    margin-top: 12px
+
+  .pac-controls
+    display: inline-block
+    padding: 5px 11px
+    label
+      font-family: Roboto
+      font-size: 13px
+      font-weight: 300
+
+  #pac-input
+    background-color: #fff
+    font-family: Roboto
+    font-size: 15px
+    font-weight: 300
+    margin-left: 12px
+    padding: 0 11px 0 13px
+    text-overflow: ellipsis
+    width: 400px
+    &:focus
+      border-color: #4d90fe
+
+  @media (min-width: $mobile-width)
+    box-shadow: $shadow-nav
+    margin-bottom: 0
+    border-radius: $radio
+    overflow: hidden
+    #map
+      height: 450px
+      .gmnoprint
+        display: block
+      .gm-control-active
+        display: block
+      .leaflet-control-container .leaflet-left, .leaflet-bottom
+        display: initial
+    .pac-card
+      margin: 10px
+      transform: none
+      left: auto
+      width: 50%
+
+
+/*FINAL - PARA EL MAPA*/

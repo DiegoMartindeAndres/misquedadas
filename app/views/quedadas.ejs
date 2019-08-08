@@ -1,107 +1,117 @@
 <% include head %>
-
-<div class="container mt-3">
-  <% include user %>
-
+<div class="container">
 
   <div class="row">
 
-    <div class="col-sm-2">
+    <div class="col-md-7 map-container">
+      <div id="map"></div>
+    </div>
+    <div class="col-md-5 mr-auto info-container d-flex flex-column">
+      <h2><%= quedada.que %></h2>
+      <div class=" data-container">
+        <div class="data-item">
+          <h6>CUÁNDO</h6>
+          <div class="data">
+            <%= quedada.dia %><br>
+            <%= quedada.hora %><br><br>
+            <%= quedada.restante %><br>
+          </div>
+        </div>
+        <div class="data-item">
+        <h6>DÓNDE</h6>
+          <div class="data">
+            <strong>Sitio: </strong><%= quedada.direccion %><br>
+            <strong>Coordenadas: </strong>(<%= lat %>,<%= lng %>)<br><br>
 
-      <div class="d-flex justify-content-between">
-        <div>
-          <div class = "card align-items-stretch">
-            <h3>Quedadas:</h3>
-            <ul class="list-unstyled">
-              <% for(var i=0; i<quedadas.length; i++) { %>
-                <li>
-                  <a href='/quedada/<%= quedadas[i] %>'>
-                    <%if (quedadas[i] == quedada.que ) { %>
-                      <strong><%= quedadas[i] %></strong>
-                      <% } else{ %>
-                        <%= quedadas[i] %>
-                      <% } %>
-                  </a>
-                </li>
-              <% } %>
-            </ul>
+            <a class="btn btn-link" href='https://www.google.com/maps/place/?q=<%= lat %>,<%= lng %>'>Abrir en Google Maps <i class="far fa-share-square"></i></a>
+
           </div>
         </div>
       </div>
-  </div>
-    <div class="col-sm-8">
-      <div id="map"></div>
-    </div>
-    <div class="col-sm-2">
-      <div class="d-flex flex-column justify-content-between">
-        <div class = "card align-items-stretch">
-          <h3>Asistentes:</h3>
-          <div class="d-flex flex-column">
-          <% for(var i=0; i<asistentes.length; i++) { %>
-            <div class="card--content">
-              <a>
-                <img  src="/img/<%= asistentes[i] %>.jpg" alt="<%= asistentes[i] %>" title="<%= asistentes[i] %>"><br>
-              </a>
-            </div>
-
-          <% } %>
-        </div>
-        </div>
-     </div>
-    </div>
-  </div>
-<div class="row">
-      <div class="col-sm-2">
-
-        <a id="botonNuevaQuedada" href="/quedada/nuevo" class="btn btn-success btn-sm btn-block">Nueva Quedada</a>
-        <br>
+        <div class="mt-auto">
+        <%if (asiste == false ) { %>
+          <form method="post" class= "" action="/api/asiste/?que=<%= quedada.que %>&nombre=<%= user %>">
+            <button class="btn btn-success btn-md btn-block" type="submit"  onClick="return confirm('¿Confirmas asistir a la quedada <%= quedada.que %>?');" >Asistir</button>
+          </form>
+        <% } else{ %>
+          <form method="post" class= "" action="/api/asiste/?que=<%= quedada.que %>&nombre=<%= user %>">
+            <button type="submit" class="btn btn-danger btn-md btn-block" onClick="return confirm('¿Confirmas dejar de asistir a la quedada <%= quedada.que %>?');">No asistir</button>
+          </form>
+        <% } %>
         <form method="post" action="/quedada/<%= quedada.que %>?_method=delete">
-          <button class="btn btn-danger btn-sm btn-block" type="submit"  onClick="return confirm('Se va a borrar: <%= quedada.que %>');">Borrar</button>
+          <button class="btn btn-danger btn-sm btn-block" type="submit"  onClick="return confirm('Se va a borrar: <%= quedada.que %>');">Borrar quedada</button>
         </form>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="lista-asistentes-container">
+      <%if (asistentes.length > 0) {%>
+        <h3>Asistentes</h3>
+      <% } else {%>
+        <h3 class="no-asistentes">Nadie ha confirmado aún asistencia...</h3>
+      <% } %>
+      <div class="d-flex flex-row flex-wrap">
+        <% for(var i=0; i<asistentes.length; i++) { %>
+          <div class="asistente-item" data-toggle="tooltip" data-placement="right" title='<%= asistentes[i] %>'>
+            <a>
+              <img  src="/img/<%= asistentes[i] %>.jpg" alt="<%= asistentes[i] %>" title="<%= asistentes[i] %>"><br>
+              <div class="nombreUsuario">
+                <%= asistentes[i] %>
+              </div>
+            </a>
+          </div>
 
+        <% } %>
+      </div>
+      <script type="text/javascript">
+        $(function () {
+          $('[data-toggle="tooltip"]').tooltip({
+            container:'body',
+            trigger: 'click',
+            animation: true
+          });
+        })
+      </script>
+    </div>
+  </div>
+  <div class="row">
+    <% include listaQuedadas %>
 
-      </div>
-      <div class="col-sm-8">
-        <p>
-          <i class="fas fa-globe"></i> <strong>Que: </strong><%= quedada.que %><br>
-          <i class="far fa-calendar-alt"></i> <strong>Día: </strong><%= quedada.dia %><br>
-          <i class="far fa-clock"></i> <strong>Hora: </strong><%= quedada.hora %><br>
-          <i class="fas fa-map-pin"></i> <strong>Dirección: </strong><%= quedada.direccion %><br>
-          <i class="fas fa-map-marker-alt"></i> <strong>Latitud: </strong><%= lat %><strong> Longitud: </strong><%= lng %><br>
-        </p>
-      </div>
-      <div class="col-sm-2">
-          <%if (asiste == false ) { %>
-            <form method="post" action="/api/asiste/?que=<%= quedada.que %>&nombre=<%= user %>">
-              <button class="btn btn-success btn-lg btn-block" type="submit"  onClick="return confirm('¿Confirmas asistir a la quedada <%= quedada.que %>?');" >Asistir</button>
-            </form>
-          <% } else{ %>
-            <form method="post" action="/api/asiste/?que=<%= quedada.que %>&nombre=<%= user %>">
-              <button type="submit" class="btn btn-danger btn-lg btn-block" onClick="return confirm('¿Confirmas dejar de asistir a la quedada <%= quedada.que %>?');">No asistir</button>
-            </form>
-          <% } %>
-      </div>
-</div>
+  </div>
 </div>
 <% include footer %>
+<% include nav%>
+<script type="text/javascript">
+  var mymap = L.map('map').setView([<%= lat %>, <%= lng %>], 20);
 
+  <%if (HereMapsAppID !== "" && HereMapsAppCode !== "" && UseOpenStreetMaps !== true) { %>
+    L.tileLayer("https://2.base.maps.api.here.com/maptile/2.1/maptile/newest/normal.day.transit/{z}/{x}/{y}/512/png8?app_id=" + "ZufL8LUCsn4530iRov3l" + "&app_code=" + "PD0XFT1gq8aU1O0s9JmSlA" + "&ppi=320", {}).addTo(mymap);
+  <% } else { %>
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {foo: 'bar', attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'}).addTo(mymap);
+  <% } %>
+
+  var marker = L.marker([<%= lat %>, <%= lng %>]).addTo(mymap);
+</script>
+<!-- Script de inicializacion de Google Maps
 <script>
-function initMap() {
-  var location = {lat: <%= lat %>, lng: <%= lng %>};
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 19,
-    center: location,
-    gestureHandling: 'none',
-    streetViewControl: false,
-    zoomControl: true
-  });
-  var marker = new google.maps.Marker({
-    position: location,
-    map: map,
-    title: 'Quedada'
-  });
-};
+  function initMap() {
+    var location = {lat: <%= lat %>, lng: <%= lng %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 19,
+      center: location,
+      gestureHandling: 'none',
+      streetViewControl: false,
+      zoomControl: true
+    });
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map,
+      title: 'Quedada'
+    });
+  };
 </script>
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=<%- GoogleMapsAPIkey %>&callback=initMap">
 </script>
+-->

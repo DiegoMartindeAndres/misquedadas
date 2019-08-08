@@ -1,0 +1,48 @@
+.lista-asistentes-container
+  padding-top: 20
+  padding-bottom: 15
+  width: 100%
+  .asistente-item
+    margin-left: 15
+    img
+      height: 10vw
+      box-shadow: $shadow-nav
+      border-radius: $radio
+      margin-bottom: 10px
+    .nombreUsuario
+      text-align: center
+  h3
+    &.no-asistentes
+      opacity: 0.4
+
+  @media(max-width: $mobile-width)
+    position: absolute
+    //padding-top: 15
+    //padding-bottom: 15
+    padding-top: 2vw
+    padding-bottom: 2vw
+    width: 100vw
+    overflow-x: scroll
+    //top: calc(100vw + 80px)
+    top: calc(100vw + 80px)
+    //transform: translateY(-50%)
+    background: linear-gradient(to bottom, #f1faff 0%, #ffffff 100%)
+    .asistente-item
+      border-radius: 100%
+      border-top: 3px solid $color-1
+      border-left: 3px solid $color-1
+      overflow: hidden
+      margin-left: 15
+      //box-shadow: $shadow-nav
+      img
+        height: 10vw
+        margin-bottom: 0
+      .nombreUsuario
+        display: none
+    h3
+      display: none
+      &.no-asistentes
+        display: block
+        padding-left: 15
+        padding-right: 15
+        font-size: 15pt

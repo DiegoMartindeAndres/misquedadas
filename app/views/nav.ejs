@@ -1,0 +1,36 @@
+<div class="overlay hidden">
+
+</div>
+<nav class="flex">
+  <div class="nav-icon">
+    <a href="javascript:history.back()" class="atras-arrow">
+      <i class="fas fa-chevron-left"></i>
+      <div class="nav-tag">
+        Atrás
+      </div>
+    </a>
+
+    <a href="#" class="otras-quedadas-toggle">
+      <i class="fas fa-list-ul"></i>
+      <div class="nav-tag">
+        Otras quedadas
+      </div>
+    </a>
+  </div>
+  <div class="user">
+    <a href="/">
+      <img class="rounded-circle fotoUsuario" src="/img/<%= user %>.jpg" alt="<%= user %>" title="<%= user %>">
+      <div class="nombreUsuario">
+        <%= user %>
+      </div>
+    </a>
+  </div>
+  <div class="nav-icon">
+    <a class="logout-button" href="/logout">
+      <div class="nav-tag">
+        Logout
+      </div>
+      <i class="fas fa-power-off"></i>
+    </a>
+  </div>
+</nav>

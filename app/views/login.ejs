@@ -1,35 +1,30 @@
 <% include head %>
 
-<!-- show any messages that come back with authentication -->
+<!-- show any messages that come back with authentication
 <% if (message.length > 0) { %>
   <%= message %>
   <% } %>
 
   <%- error %>
-
-  <body id="LoginForm">
-    <div class="container">
+-->
+  <body id="LoginForm" class="d-flex align-items-center">
+    <div class="container login-container">
+      <img src="/img/logo.png" alt="">
+      <h2>mis quedadas</h2>
       <div class="login-form">
-        <div class="main-div">
           <div class="panel">
-            <h2>Accede a MIS QUEDADAS v2</h2>
-            <p>Introduce tu usuario y tu clave</p>
+            <p>Accede a Mis quedadas v2 introduciendo tu usuario y contraseña</p>
           </div>
           <form id="Login" action="/login" method="post" enctype='application/json'>
 
             <div class="form-group">
               <input type="text" class="form-control" name="nombre" placeholder="Usuario">
             </div>
-
-
             <div class="form-group">
               <input type="password" class="form-control" name="clave" placeholder="Contraseña">
             </div>
-
-
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary btn-block button-login">Login</button>
           </form>
-        </div>
       </div>
     </div>
   </body>

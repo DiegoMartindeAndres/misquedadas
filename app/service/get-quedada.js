@@ -22,13 +22,16 @@ const args   = require('app/args');
 const db     = require('app/db');
 const logger = require('app/logger').getLogger('mq2.service');
 
+const moment = require('moment');
+moment.locale('es');
+
 
 /**
 * Muestra una quedada concreta
 * @type {string}
 */
 const SQL_GET_QUEDADA = [
-  'SELECT * FROM quedada WHERE que={que}'
+  "SELECT * FROM quedada WHERE que={que}"
 ].join('\n');
 
 /**
@@ -55,8 +58,25 @@ module.exports.execute = function (parametros) {
       var objeto = {};
       if (databases[0]){
         objeto.que = databases[0].que;
-        objeto.dia = databases[0].dia;
-        objeto.hora = databases[0].hora;
+
+        //Formato fecha
+        var dia = moment(databases[0].dia).format('YYYY-MM-DD');
+        var hora = moment("2013-02-08 " + databases[0].hora).format('HH:mm');
+        var fecha = moment(dia +' '+ hora);
+
+
+
+        if(moment().isBefore(fecha)){
+          var restante = "Quedan " + fecha.fromNow(true) + " para este evento";
+        } else{
+          var restante = "Este evento ya ha acabado...";
+        }
+        objeto.dia = fecha.format('dddd DD MMMM YYYY').toUpperCase();
+
+        objeto.hora = fecha.format('HH:mm');
+
+        objeto.restante = restante;
+
         objeto.direccion = databases[0].direccion;
       }
       var result = [objeto];

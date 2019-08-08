@@ -1,0 +1,72 @@
+.lista-quedadas-container
+  z-index: 4
+  width: 100vw
+  padding: 0
+  padding-top: 60
+  padding-bottom: 15
+  h3
+    text-align: center
+  .lista-quedadas
+    max-height: 30vh
+    z-index: 4
+    overflow-y: scroll
+    padding: 0
+    margin-bottom: 0
+    a
+      font-size: 1.3rem
+      form
+        margin-bottom: 0
+        .check-asiste
+          padding: 3px
+          margin-right: 10
+          border: none
+          background: none
+          &.fa-check-circle
+            color: $color-1
+      &.active
+        background-color: $color-1
+        border-color: $color-1
+        color: white
+        .check-asiste
+          color: white
+          &.fa-check-circle
+            color: white
+  @media (min-width: $mobile-width-md)
+    width: auto
+    h3
+      text-align: left
+//Estilos para desplegable desde nav
+.lista-quedadas-container.desplegable
+  padding: 0
+  position: fixed
+  z-index: 2
+  top: 0
+  left: 0
+  padding-top: $nav-height
+  height: 0
+  overflow: hidden
+  background-color: white
+  transition: all $transition-duration $transition-funtion
+  border-radius: 0 0 $radio $radio
+  .lista-quedadas
+    max-height: 80vh
+  &.scrolled
+    padding-top: $nav-height-scrolled
+  &.displayed
+    height: 100vh
+  @media (min-width: $mobile-width-md)
+    top: $nav-height-desktop
+    padding: 0
+    max-height: 60vh
+    opacity: 0
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    .lista-quedadas
+      max-height: auto
+      //border-bottom: 2px solid $color-4
+    #botonNuevaQuedada
+      margin: 0
+    &.displayed
+      opacity: 1
+      //box-shadow: $shadow-nav

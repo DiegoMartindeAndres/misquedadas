@@ -20,6 +20,8 @@ const executor      = require('app/executor');
 const showSitios = require('app/service/get-sitios');
 const addSitio = require('app/service/add-sitio');
 const removeSitio = require('app/service/remove-sitio');
+const showQuedadas = require('app/service/get-quedadas');
+const showAsistencia = require('app/service/get-asistencia');
 
 const _ = require('lodash');
 var def = require('../../misquedadas-2.json');
@@ -74,9 +76,9 @@ module.exports = function (app,passport) {
   router.post('/', isLoggedIn, function (req, res) {
     var params = {};
     params.direccion = req.body.direccion;
-    params.coordenadas = req.body.lat + ", " + req.body.lng;
+    params.coordenadas = req.body.lat.substr(0,14) + ", " + req.body.lng.substr(0,14);
 
-    //console.log(params);
+    //console.log("Parametros SITIO: " + params);
     Promise.all([showSitios.execute()])
     .catch(
       function(err) {
@@ -119,7 +121,7 @@ module.exports = function (app,passport) {
         router.get('/nuevo', isLoggedIn, function (req, res) {
           var usuario = req.session.passport.user;
           // Ejecutamos todas las promesas de búsquedas en la BBDD...
-          Promise.all([showSitios.execute()])
+          Promise.all([showSitios.execute(), showQuedadas.execute(usuario), showAsistencia.execute(usuario)])
           .catch(
             function(err) {
               //console.log(err.message); // some coding error in handling happened
@@ -127,8 +129,10 @@ module.exports = function (app,passport) {
             })
             .then(values => {
               var sitios = values[0];
+              var quedadas = values[1].quedadas;
+              var quedadasAsisto = values[2];
               //console.log(sitios); // some coding error in handling happened
-              res.render('nuevoSitio',{sitios:sitios,user:usuario, GoogleMapsAPIkey:def.GoogleMapsAPIkey});
+              res.render('nuevoSitio',{sitios:sitios,user:usuario, GoogleMapsAPIkey:def.GoogleMapsAPIkey, quedadas: quedadas, quedadasAsisto: quedadasAsisto, quedada: "No hay quedada seleccionada", HereMapsAppID: def.HereMapsAppID, HereMapsAppCode: def. HereMapsAppCode, UseOpenStreetMaps: def.UseOpenStreetMaps});
             });
           });
 
