@@ -398,6 +398,16 @@
 		"oS": 1,
 		"uL": 1
 		},
+	"/app/public/css/style-min.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "/app/public/css/style-min-min.css",
+		"oF": 0,
+		"oS": 3
+		},
 	"/app/public/css/style.css": {
 		"aP": 1,
 		"bl": 0,
@@ -441,6 +451,17 @@
 		"opt": 0,
 		"q": 100
 		},
+	"/app/public/img/cris.jpg": {
+		"ft": 16384,
+		"iS": 620200,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/app/public/img/cris.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"q": 100
+		},
 	"/app/public/img/dani.jpg": {
 		"ft": 16384,
 		"iS": 6745,
@@ -463,6 +484,17 @@
 		"opt": 0,
 		"q": 100
 		},
+	"/app/public/img/juan.JPG": {
+		"ft": 16384,
+		"iS": 106896,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/app/public/img/juan.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 1,
+		"q": 100
+		},
 	"/app/public/img/login-background.jpg": {
 		"ft": 16384,
 		"iS": 1787033,
@@ -483,6 +515,17 @@
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
+		"q": 100
+		},
+	"/app/public/img/nuria.jpg": {
+		"ft": 16384,
+		"iS": 874068,
+		"jF": 0,
+		"oA": 0,
+		"oAP": "/app/public/img/nuria.jpg",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
 		"q": 100
 		},
 	"/app/public/img/usuario.jpg": {
@@ -928,6 +971,20 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/app/views/usuario.ejs",
+		"oF": 0
+		},
+	"/build/.gitignore": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/.gitignore",
+		"oF": 0
+		},
+	"/build/node_modules": {
+		"ft": 65536,
+		"oA": 2,
+		"oAP": "/build/build/node_modules",
 		"oF": 0
 		},
 	"/hero.txt": {

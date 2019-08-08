@@ -44,7 +44,6 @@ module.exports.execute = function (parametros) {
       var params = {};
       params.direccion = direccion;
       params.coordenadas = coordenadas;
-
       return conn.query(sqlStatement, params)
         .then(function (databases) {
           if (args.isVerbose()) {

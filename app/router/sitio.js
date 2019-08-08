@@ -76,9 +76,9 @@ module.exports = function (app,passport) {
   router.post('/', isLoggedIn, function (req, res) {
     var params = {};
     params.direccion = req.body.direccion;
-    params.coordenadas = req.body.lat + ", " + req.body.lng;
+    params.coordenadas = req.body.lat.substr(0,14) + ", " + req.body.lng.substr(0,14);
 
-    //console.log(params);
+    //console.log("Parametros SITIO: " + params);
     Promise.all([showSitios.execute()])
     .catch(
       function(err) {
