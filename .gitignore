@@ -19,14 +19,5 @@ apidoc/
 # Settings
 settings.*.json
 
-# Mis ficheros
-clave.txt
-conectar.bat
-ficheros.txt
-inicializarDirectorios.sh
-logo.png
-subir.bat
-start.sh
-stop.sh
-readme2.md
-config.codekit3
+# Cosas varias
+.info/
