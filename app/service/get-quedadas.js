@@ -54,7 +54,7 @@ module.exports.execute = function () {
             const name = _.values(db)[0];
             result.quedadas.push(name);
           });
-          console.log(result);
+          //console.log(result);
           return result;
           //Nueva promesa para añadir a los datos devueltos si el usuario asiste a cada una de las quedadas
         })
