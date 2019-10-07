@@ -80,7 +80,7 @@ module.exports = function (app,passport) {
 
         if (values[0].quedadas[0]){
           var primeraQue = values[0].quedadas[0];
-          console.log("/////////////////////////////////////////////"+primeraQue);
+          //console.log("/////////////////////////////////////////////"+primeraQue);
           res.redirect(301,'/quedada/'+primeraQue);
         } else {
           res.render('error',{message:"Parece que no tienes ninguna quedada en la BBDD.", error:""});
