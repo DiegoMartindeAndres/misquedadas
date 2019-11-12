@@ -11,6 +11,12 @@
 ## Instalación de la aplicación
 En la consola de comandos del Servidor Personal ejecutar:
 
+***Nota importante antes de la instalación***: El servidor personal en la nube tiene instaladas las herramientas necesarias para poder realizar el proyecto final  como un servidor HTTP Apache, un servidor Node.js o el gestor de bases de datos MySQL.
+
+NO ES NECESARIO QUE INSTALE SOFTWARE ADICIONAL usando instrucciones como <apt-get -installl>.
+
+La instalación de software adicional puede incurrir en el crecimiento de la cuota de disco y por lo tanto se procederá al reseteo de la máquina como medida cautelar.
+
 ```sh
 $ cd ~
 $ git clone https://github.com/DiegoMartindeAndres/misquedadas.git
