@@ -8,6 +8,12 @@
 * Descargar en la máquina local la clave privada de acceso al servidor según se indica en las instrucciones de la página  anterior
 * Acceder, por ssh, al Servidor Personal siguiendo las instrucciones de la misma página
 
+***Nota importante antes de la instalación***: El servidor personal en la nube tiene instaladas las herramientas necesarias para poder realizar el proyecto final  como un servidor HTTP Apache, un servidor Node.js o el gestor de bases de datos MySQL.
+
+NO ES NECESARIO QUE INSTALE SOFTWARE ADICIONAL usando instrucciones como <apt-get -installl>.
+
+La instalación de software adicional puede incurrir en el crecimiento de la cuota de disco y por lo tanto se procederá al reseteo de la máquina como medida cautelar.
+
 ## Instalación de la aplicación
 En la consola de comandos del Servidor Personal ejecutar:
 
@@ -17,10 +23,20 @@ $ git clone https://github.com/DiegoMartindeAndres/misquedadas.git
 $ cd ~/misquedadas
 $ npm install
 ```
+***Nota***: es posible que después de ejecutar la acción "npm install" nos devuelva un mensaje diciendo que tenemos vulnerabilidades (found 5 vulnerabilities (2 low, 1 moderate, 2 high)). No es importante, simplemente haz caso omiso.
 
-## Modificar las claves de acceso a la BBDD y al mapa de Google Maps
-Nos acabamos de descargar el código de un repositorio público. No es una buena práctica dejar en los repositorios públicos claves ya cualquiera podría ver las claves y acceder al sistema. Por lo tanto tendremos que añadir a mano dichas claves; las claves se almacenan en un fichero llamado “misquedadas-2.json”. Deberemos editarlo, por ejemplo con Nano (nano misquedadas-2.json)
+## Configurar la aplicación
+Acabas de descargar el código de la aplicación de un repositorio público. No es una buena práctica dejar en los repositorios públicos claves, como el del acceso a nuestra base de datos, ya cualquiera podría ver las claves y acceder a nuestro al sistema. Por lo tanto, tendremos que añadir a mano dichas claves y configurar la IP de nuestro servidor en la nube. Esta información está almacenada en un fichero llamado “~/misquedadas/misquedadas-2.json”. 
+Puedes editarlo, por ejemplo, con Nano (nano ~/misquedadas/misquedadas-2.json)
+Debes cambiar la siguiente línea para poner entre comillas la IP de tú servidor:
+```sh
+"host": "IP de tu servidor"
+```
 
+También debemos cambiar la siguiente línea, para colocar la clave que utilizamos para acceder a la BBDD entre comillas
+```sh
+"password": "Clave de la base de datos",
+```
 Los valores concretos están publicados en el Moodle de la asignatura en el artículo "Instalación y pruebas del portal "misquedadas""
 
 ## Carga de contenidos
