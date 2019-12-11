@@ -26,6 +26,7 @@ const removeQuedada = require('app/service/remove-quedada');
 const addQuedada = require('app/service/add-quedada');
 const showSitios = require('app/service/get-sitios');
 const showSitiosBorrables = require('app/service/get-sitiosBorrables');
+const showImagenUsuario = require('app/service/get-imagenUsuario');
 
 const _ = require('lodash');
 
@@ -80,7 +81,7 @@ module.exports = function (app,passport) {
 
         if (values[0].quedadas[0]){
           var primeraQue = values[0].quedadas[0];
-          console.log("/////////////////////////////////////////////"+primeraQue);
+          //console.log("/////////////////////////////////////////////"+primeraQue);
           res.redirect(301,'/quedada/'+primeraQue);
         } else {
           res.render('error',{message:"Parece que no tienes ninguna quedada en la BBDD.", error:""});
@@ -92,7 +93,7 @@ module.exports = function (app,passport) {
     router.get('/nuevo', isLoggedIn, function (req, res) {
       var usuario = req.session.passport.user;
       // Ejecutamos todas las promesas de búsquedas en la BBDD...
-      Promise.all([showSitios.execute(), showQuedadas.execute(usuario),showSitiosBorrables.execute(), showAsistencia.execute(usuario)])
+      Promise.all([showSitios.execute(), showQuedadas.execute(usuario),showSitiosBorrables.execute(), showAsistencia.execute(usuario),showImagenUsuario.execute(usuario) ])
       .catch(
         function(err) {
           //console.log(err.message); // some coding error in handling happened
@@ -103,8 +104,10 @@ module.exports = function (app,passport) {
           var quedadas = values[1].quedadas;
           var sitiosBorrables = values[2];
           var quedadasAsisto = values[3];
+	  var imagenUsuario = values[4];
+
           //console.log(sitios); // some coding error in handling happened
-          res.render('nuevoQuedada',{sitios:sitios,quedadas:quedadas,sitiosBorrables:sitiosBorrables,user:usuario, quedadasAsisto: quedadasAsisto, quedada: "No hay quedada seleccionada"});
+          res.render('nuevoQuedada',{sitios:sitios,quedadas:quedadas,sitiosBorrables:sitiosBorrables,user:usuario, imagen:imagenUsuario, quedadasAsisto: quedadasAsisto, quedada: "No hay quedada seleccionada"});
         });
       });
 
@@ -141,13 +144,14 @@ module.exports = function (app,passport) {
         var params = {};
         params.que = req.params.QUE;
         // Ejecutamos todas las promesas de búsquedas en la BBDD...
-        Promise.all([showQuedadas.execute(), showQuedada.execute(params), showAsiste.execute(params),showCoordenada.execute(params),showAsistencia.execute(usuario) ])
+        Promise.all([showQuedadas.execute(), showQuedada.execute(params), showAsiste.execute(params),showCoordenada.execute(params),showAsistencia.execute(usuario),showImagenUsuario.execute(usuario) ])
         .catch(
           function(err) {
             //console.log(err.message); // some coding error in handling happened
             res.render('error',{message:err.messagge, error:err});
           })
           .then(values => {
+
             var quedadas = values[0].quedadas;
             var quedadasAsisto = values[4];
             var datosQuedada = values[1];
@@ -155,11 +159,12 @@ module.exports = function (app,passport) {
             var arrayCoordenada = _.split(values[3][0].coordenadas, ',');
             var lat = _.trim(arrayCoordenada[0]);
             var lng = _.trim(arrayCoordenada[1]);
-
+            var imagenUsuario = values[5];
             var asiste = asistentes.includes(usuario);
+
             //console.log('Datos quedada: ' + datosQuedada[0].que + ' ' + datosQuedada[0].dia + ' ' + datosQuedada[0].restante);
             //console.log("Quedadas a las que asiste " + usuario + ": " +quedadasAsisto);
-            res.render('quedadas',{quedadas:quedadas, quedadasAsisto: quedadasAsisto, quedada:datosQuedada[0], asistentes:asistentes, lat:lat, lng:lng , user:usuario, asiste:asiste, GoogleMapsAPIkey:def.GoogleMapsAPIkey, HereMapsAppID: def.HereMapsAppID, HereMapsAppCode: def. HereMapsAppCode, UseOpenStreetMaps: def.UseOpenStreetMaps});
+            res.render('quedadas',{quedadas:quedadas, quedadasAsisto: quedadasAsisto, quedada:datosQuedada[0], asistentes:asistentes, lat:lat, lng:lng , user:usuario, imagen:imagenUsuario, asiste:asiste, GoogleMapsAPIkey:def.GoogleMapsAPIkey, HereMapsAppID: def.HereMapsAppID, HereMapsAppCode: def. HereMapsAppCode, UseOpenStreetMaps: def.UseOpenStreetMaps});
           });
         });
 

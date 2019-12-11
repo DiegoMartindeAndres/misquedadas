@@ -22,6 +22,7 @@ const addSitio = require('app/service/add-sitio');
 const removeSitio = require('app/service/remove-sitio');
 const showQuedadas = require('app/service/get-quedadas');
 const showAsistencia = require('app/service/get-asistencia');
+const showImagenUsuario = require('app/service/get-imagenUsuario');
 
 const _ = require('lodash');
 var def = require('../../misquedadas-2.json');
@@ -121,7 +122,7 @@ module.exports = function (app,passport) {
         router.get('/nuevo', isLoggedIn, function (req, res) {
           var usuario = req.session.passport.user;
           // Ejecutamos todas las promesas de búsquedas en la BBDD...
-          Promise.all([showSitios.execute(), showQuedadas.execute(usuario), showAsistencia.execute(usuario)])
+          Promise.all([showSitios.execute(), showQuedadas.execute(usuario), showAsistencia.execute(usuario),showImagenUsuario.execute(usuario)])
           .catch(
             function(err) {
               //console.log(err.message); // some coding error in handling happened
@@ -131,8 +132,9 @@ module.exports = function (app,passport) {
               var sitios = values[0];
               var quedadas = values[1].quedadas;
               var quedadasAsisto = values[2];
+              var imagenUsuario = values[3];
               //console.log(sitios); // some coding error in handling happened
-              res.render('nuevoSitio',{sitios:sitios,user:usuario, GoogleMapsAPIkey:def.GoogleMapsAPIkey, quedadas: quedadas, quedadasAsisto: quedadasAsisto, quedada: "No hay quedada seleccionada", HereMapsAppID: def.HereMapsAppID, HereMapsAppCode: def. HereMapsAppCode, UseOpenStreetMaps: def.UseOpenStreetMaps});
+              res.render('nuevoSitio',{sitios:sitios,user:usuario, imagen:imagenUsuario, GoogleMapsAPIkey:def.GoogleMapsAPIkey, quedadas: quedadas, quedadasAsisto: quedadasAsisto, quedada: "No hay quedada seleccionada", HereMapsAppID: def.HereMapsAppID, HereMapsAppCode: def. HereMapsAppCode, UseOpenStreetMaps: def.UseOpenStreetMaps});
             });
           });
 
