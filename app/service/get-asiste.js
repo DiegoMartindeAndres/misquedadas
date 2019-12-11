@@ -5,7 +5,7 @@
  */
 
 /**
- * Obtiene una lista de asistente a una quedada
+ * Obtiene una lista de imagenes de asistente a una quedada
  * @module mq2/service/get-asiste
  *
  * @requires lodash
@@ -28,7 +28,7 @@ const logger = require('app/logger').getLogger('mq2.service');
  * @type {string}
  */
  const SQL_GET_ASISTE = [
-   'SELECT nombre FROM asiste WHERE que={que}'
+   'SELECT usuario.nombre,imagen FROM asiste, usuario WHERE asiste.nombre = usuario.nombre AND asiste.que={que}'
  ].join('\n');
 
  /**
@@ -54,7 +54,7 @@ const logger = require('app/logger').getLogger('mq2.service');
            
            var result = [];
            _.forEach(databases, function (db) {
-             const name = _.values(db)[0];
+             const name = _.values(db);
              result.push(name);
            });
            return result;

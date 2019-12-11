@@ -5,7 +5,7 @@
  */
 
 /**
- * Obtiene la URL de la imagen de un usuario por el nombre
+ * Obtiene la imagen de un usuario
  * @module mq2/service/get-imagenUsuario
  *
  * @requires lodash
@@ -24,11 +24,11 @@ const logger = require('app/logger').getLogger('mq2.service');
 
 
 /**
- * Muestra la URL de la imagen del usuario usuario por el nombre
+ * Muestra la imagen de un usuario
  * @type {string}
  */
- const SQL_GET_IMAGENUSUARIO = [
-   'SELECT imagen FROM usuario WHERE nombre={nombre}'
+ const SQL_GET_ASISTE = [
+   'SELECT imagen FROM usuario WHERE nombre={usuario}'
  ].join('\n');
 
  /**
@@ -36,33 +36,28 @@ const logger = require('app/logger').getLogger('mq2.service');
   * @param parametros de momento
   * @return {promise} the promise resolve callback has the parameter, that has all databases from mysql server.
   */
- module.exports.execute = function (parametros) {
+ module.exports.execute = function (usr) {
    return db.getConnection()
      .then(function (conn) {
-       const nombre = _preparePattern(parametros.nombre);
+       const usuario = _preparePattern(usr);
 
-       var sqlStatement = SQL_GET_IMAGENUSUARIO;
+       var sqlStatement = SQL_GET_ASISTE;
        var params = {};
-       params.nombre = nombre;
+       params.usuario = usuario;
 
        return conn.query(sqlStatement, params)
          .then(function (databases) {
            if (args.isVerbose()) {
-             logger.debug('Your imagen de usuario: ', JSON.stringify(databases));
+             logger.debug('Your databases: ', JSON.stringify(databases));
            }
 
-           //console.log(databases);
-           var objeto = {};
-           if (databases[0]){
-             objeto.imagen = databases[0].imagen;
-           }
-
-
-           var result = [objeto];
-           // _.forEach(databases, function (db) {
-           //   const name = _.values(db)[0];
-           //   result.push(name);
-           // });
+           var result = [];
+           _.forEach(databases, function (db) {
+             const name = _.values(db)[0];
+             result.push(name);
+           });
+           //console.log("Resultado de consulta de asistencia");
+           //console.log(result);
            return result;
          })
          .finally(function () {
