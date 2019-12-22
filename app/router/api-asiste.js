@@ -20,7 +20,7 @@ const executor      = require('app/executor');
 const showAsiste = require('app/service/get-asiste');
 const addAsiste = require('app/service/add-asiste');
 const removeAsiste = require('app/service/remove-asiste');
-
+const _ = require('lodash');
 
 //
 // Router: /quedada
@@ -30,6 +30,17 @@ const router = express.Router({
   mergeParams: true,
   strict: true
 });
+
+
+function asisteUsuario(asistentes, usuario)
+// Asistentes es un array bidimensional[[ana,bartolo.jg],[epi,epi.jpg]]
+{
+  var encontrado = false;
+  _.forEach(asistentes, function(value) {
+    if (value[0] == usuario) encontrado = true;
+  });
+  return encontrado;
+}
 
 //
 // Endpoints...
@@ -131,7 +142,7 @@ router.post('/', function (req, res) {
       })
       .then(values => {
         var asistentes = values[0];
-        if (asistentes.includes(params.nombre)){
+        if (asisteUsuario(asistentes,params.nombre)){
             // console.log("el asistente: "+params.nombre+" está dentro de la lista: "+asistentes);
             // console.log("lo borro.");
 

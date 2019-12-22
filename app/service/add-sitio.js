@@ -27,7 +27,7 @@ const logger = require('app/logger').getLogger('mq2.service');
  * @type {string}
  */
 const SQL_ADD_SITIO = [
-  'INSERT INTO sitio VALUES ({direccion}, {coordenadas})'
+  'INSERT INTO sitio (direccion, coordenadas) VALUES ({direccion}, {coordenadas})'
 ].join('\n');
 
 /**

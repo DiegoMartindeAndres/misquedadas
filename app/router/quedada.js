@@ -42,7 +42,15 @@ const router = express.Router({
   strict: true
 });
 
-
+function asisteUsuario(asistentes, usuario)
+// Asistentes es un array bidimensional[[ana,bartolo.jg],[epi,epi.jpg]]
+{
+  var encontrado = false;
+  _.forEach(asistentes, function(value) {
+    if (value[0] == usuario) encontrado = true;
+  });
+  return encontrado;
+}
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
@@ -160,7 +168,7 @@ module.exports = function (app,passport) {
             var lat = _.trim(arrayCoordenada[0]);
             var lng = _.trim(arrayCoordenada[1]);
             var imagenUsuario = values[5];
-            var asiste = asistentes.includes(usuario);
+            var asiste = asisteUsuario(asistentes,usuario);
 
             //console.log('Datos quedada: ' + datosQuedada[0].que + ' ' + datosQuedada[0].dia + ' ' + datosQuedada[0].restante);
             //console.log("Quedadas a las que asiste " + usuario + ": " +quedadasAsisto);

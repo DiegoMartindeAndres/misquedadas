@@ -27,7 +27,7 @@ const logger = require('app/logger').getLogger('mq2.service');
  * @type {string}
  */
 const SQL_ADD_ASISTE = [
-  'INSERT INTO asiste VALUES ({nombre},{que})'
+  'INSERT INTO asiste (nombre, que) VALUES ({nombre},{que})'
 ].join('\n');
 
 /**

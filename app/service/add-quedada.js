@@ -27,7 +27,7 @@ const logger = require('app/logger').getLogger('mq2.service');
  * @type {string}
  */
 const SQL_ADD_QUEDADA = [
-  'INSERT INTO quedada VALUES ({que}, {dia}, {hora}, {direccion})'
+  'INSERT INTO quedada (que, dia, hora, direccion) VALUES ({que}, {dia}, {hora}, {direccion})'
 ].join('\n');
 
 /**
