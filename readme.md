@@ -69,4 +69,4 @@ $ npm start
 
 ## License
 
-Diego Martín de Andrés 2018
+Diego Martín de Andrés 2020
