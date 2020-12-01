@@ -23,7 +23,10 @@ $ git clone https://github.com/DiegoMartindeAndres/misquedadas.git
 $ cd ~/misquedadas
 $ npm install
 ```
-***Nota***: es posible que después de ejecutar la acción "npm install" nos devuelva un mensaje diciendo que tenemos vulnerabilidades (found 5 vulnerabilities (2 low, 1 moderate, 2 high)). No es importante, simplemente haz caso omiso.
+***Nota***: es posible que después de ejecutar la acción "npm install" nos devuelva un mensaje diciendo que tenemos vulnerabilidades (found 9 vulnerabilities (6 low, 1 moderate, 2 high)). No es importante, podemos hacer haz caso omiso, aunque si lo queremos resolver podemos introducir el siguiente comando:
+```sh
+$ npm audit fix
+```
 
 ## Configurar la aplicación
 Acabas de descargar el código de la aplicación de un repositorio público. No es una buena práctica dejar en los repositorios públicos claves, como el del acceso a nuestra base de datos, ya cualquiera podría ver las claves y acceder a nuestro al sistema. Por lo tanto, tendremos que añadir a mano dichas claves y configurar la IP de nuestro servidor en la nube. Esta información está almacenada en un fichero llamado “~/misquedadas/misquedadas-2.json”. 
