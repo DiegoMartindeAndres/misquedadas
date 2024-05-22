@@ -1,7 +1,7 @@
 
 # Instalación y pruebas del portal "misquedadas"
 
-## Arranque y acceso al Servidor Personal Virtual
+## Arranque y acceso al Servidor Personal Virtual 
 
 * Arrancar el Servidor Personal desde Moodle de FTEL
 * Moodle de la UPM -> Asignatura FTEL -> Tema 6 - Proyecto del curso -> Servidor Personal en la nube DIT: arranque, estado y acceso
